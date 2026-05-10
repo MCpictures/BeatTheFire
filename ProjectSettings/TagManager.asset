@@ -13,8 +13,8 @@ TagManager:
   - Water
   - UI
   - Ladder
-  - 
-  - 
+  - Character
+  - BrokenPiece
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BrokenPieces
+    uniqueID: 3273371473
+    locked: 0
+  - name: Fire
+    uniqueID: 26490617
     locked: 0
   - name: Character
     uniqueID: 953849701
