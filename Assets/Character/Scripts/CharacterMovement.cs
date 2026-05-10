@@ -25,6 +25,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] InputAction jumpAction;
 
     [SerializeField] bool isLookingRight;
+    [SerializeField] Animator animator;
 
     bool isTouchingLadder;
     bool isClimbing;
@@ -50,6 +51,7 @@ public class CharacterMovement : MonoBehaviour
 
         ComputeLookDirection(xInput);
         FlipSprite();
+        HandleAnimation();
 
         if (isTouchingLadder && Mathf.Abs(yInput) > 0.1f)
         {
@@ -155,6 +157,12 @@ public class CharacterMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+    }
+
+    void HandleAnimation()
+    {
+        float xInput = moveAction.ReadValue<Vector2>().x;
+        animator.SetBool("IsRunning", Mathf.Abs(xInput) > 0.01f && isGrounded);
     }
 
     public bool IsLookingRight { get { return isLookingRight; } }
