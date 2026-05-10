@@ -49,9 +49,9 @@ public class CharacterMovement : MonoBehaviour
         float xInput = moveAction.ReadValue<Vector2>().x;
         float yInput = moveAction.ReadValue<Vector2>().y;
 
+        HandleAnimation();
         ComputeLookDirection(xInput);
         FlipSprite();
-        HandleAnimation();
 
         if (isTouchingLadder && Mathf.Abs(yInput) > 0.1f)
         {
@@ -79,6 +79,7 @@ public class CharacterMovement : MonoBehaviour
         {
             if (jump && isGrounded)
             {
+                animator.SetTrigger("JumpTrigger");
                 targetVelocity.y = jumpTakeOffSpeed;
                 jump = false;
             }
@@ -163,6 +164,7 @@ public class CharacterMovement : MonoBehaviour
     {
         float xInput = moveAction.ReadValue<Vector2>().x;
         animator.SetBool("IsRunning", Mathf.Abs(xInput) > 0.01f && isGrounded);
+        animator.SetBool("IsIdle", Mathf.Abs(xInput) == 0f && isGrounded);
     }
 
     public bool IsLookingRight { get { return isLookingRight; } }
