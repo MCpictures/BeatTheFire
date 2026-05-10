@@ -9,6 +9,7 @@ public class CharacterAttack : MonoBehaviour
 
     List<Attackable> rightAttackables = new List<Attackable>();
     List<Attackable> leftAttackables = new List<Attackable>();
+    [SerializeField] Animator animator;
 
     void Awake()
     {
@@ -26,6 +27,8 @@ public class CharacterAttack : MonoBehaviour
     {
         if(attackAction.WasPressedThisFrame())
         {
+            HandleAnimation();
+
             if(characterMovement.IsLookingRight)
             {
                 foreach (var attackable in rightAttackables)
@@ -67,5 +70,10 @@ public class CharacterAttack : MonoBehaviour
                 leftAttackables.Remove(attackableIn);
                 break;
         }
+    }
+
+    void HandleAnimation()
+    {
+        animator.SetTrigger("AttackTrigger");
     }
 }
