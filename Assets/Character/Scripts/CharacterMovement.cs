@@ -64,8 +64,6 @@ public class CharacterMovement : MonoBehaviour
         }
 
         ComputeVelocity(xInput, yInput);
-
-        print(isClimbing);
     }
 
     void ComputeVelocity(float moveIntendX, float moveIntendY)
