@@ -62,8 +62,10 @@ public class CharacterMovement : MonoBehaviour
         {
             jump = true;
         }
-       
+
         ComputeVelocity(xInput, yInput);
+
+        print(isClimbing);
     }
 
     void ComputeVelocity(float moveIntendX, float moveIntendY)
@@ -163,8 +165,21 @@ public class CharacterMovement : MonoBehaviour
     void HandleAnimation()
     {
         float xInput = moveAction.ReadValue<Vector2>().x;
+        float yInput = moveAction.ReadValue<Vector2>().y;
+
         animator.SetBool("IsRunning", Mathf.Abs(xInput) > 0.01f && isGrounded);
         animator.SetBool("IsIdle", Mathf.Abs(xInput) == 0f && isGrounded);
+
+        animator.SetBool("IsClimbing", isClimbing);
+
+        if (Mathf.Abs(xInput) > 0.01f || Mathf.Abs(yInput) > 0.01f)
+        {
+            animator.SetFloat("ClimbSpeed", 1f);
+        }
+        else
+        {
+            animator.SetFloat("ClimbSpeed", 0f);
+        }
     }
 
     public bool IsLookingRight { get { return isLookingRight; } }
