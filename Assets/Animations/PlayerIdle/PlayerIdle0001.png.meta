@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerIdle0001
+      name: PlayerIdle0000
       rect:
         serializedVersion: 2
-        x: 764
+        x: 769
         y: 150
-        width: 1787
-        height: 4798
+        width: 1909
+        height: 4696
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 854d7499cd92182b0800000000000000
-      internalID: -5584136035521538984
+      spriteID: 75606c9d5aba9e240800000000000000
+      internalID: 4821573604888413783
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7a1839a2593d7430cb201d22061e2320
+    spriteID: 7fad88db98c384b428328dbc831af61e
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerIdle0001: -5584136035521538984
+      PlayerIdle0000: 4821573604888413783
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

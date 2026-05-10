@@ -3,8 +3,8 @@ guid: 4a6190dbc5e0645d79e94dde4d17c639
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7464723804209179513
-    second: PlayerRun0032_0
+      213: 1142392071095699861
+    second: PlayerRun0013_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 6000
