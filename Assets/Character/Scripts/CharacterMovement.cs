@@ -10,7 +10,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 7;
 
     [SerializeField] float climbSpeed = 4f;
-    [SerializeField] LayerMask ladderLayer;
 
     [SerializeField] float jumpTakeOffSpeed = 7;
     [SerializeField] LayerMask groundLayer;
@@ -122,24 +121,18 @@ public class CharacterMovement : MonoBehaviour
         Gizmos.DrawWireCube(castCenter, groundCheckBoxSize);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void EnteredLadder()
     {
-        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
-        {
-            isTouchingLadder = true;
-            rigidBody.gravityScale = 0f;
-            rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, 0f);
-        }
+        isTouchingLadder = true;
+        rigidBody.gravityScale = 0f;
+        rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, 0f);
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public void ExitLadder()
     {
-        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
-        {
-            isTouchingLadder = false;
-            isClimbing = false;
-            rigidBody.gravityScale = 1f;
-        }
+        isTouchingLadder = false;
+        isClimbing = false;
+        rigidBody.gravityScale = 1f;
     }
 
     void ComputeLookDirection(float moveInput)
