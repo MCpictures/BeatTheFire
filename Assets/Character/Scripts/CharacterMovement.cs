@@ -62,6 +62,12 @@ public class CharacterMovement : MonoBehaviour
         {
             jump = true;
         }
+    }
+
+    void FixedUpdate()
+    {
+        float xInput = moveAction.ReadValue<Vector2>().x;
+        float yInput = moveAction.ReadValue<Vector2>().y;
 
         ComputeVelocity(xInput, yInput);
     }
