@@ -97,7 +97,7 @@ public class CharacterMovement : MonoBehaviour
 
     void CheckGrounded()
     {
-        Vector2 origin = (Vector2)transform.position + Vector2.down * groundCheckYOffset;
+        Vector2 origin = (Vector2)transform.position + Vector2.down * (groundCheckYOffset * transform.lossyScale.y);
 
         RaycastHit2D hit = Physics2D.BoxCast(
             origin,
@@ -115,7 +115,7 @@ public class CharacterMovement : MonoBehaviour
     {
         Gizmos.color = isGrounded ? Color.green : Color.red;
 
-        Vector2 origin = (Vector2)transform.position + Vector2.down * groundCheckYOffset;
+        Vector2 origin = (Vector2)transform.position + Vector2.down * (groundCheckYOffset * transform.lossyScale.y);
         Vector2 castCenter = origin + Vector2.down * groundCheckDistance;
 
         Gizmos.DrawWireCube(castCenter, groundCheckBoxSize);
