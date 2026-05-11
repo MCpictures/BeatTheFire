@@ -1,18 +1,26 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
 {
 
     // This script handles the timer of a specific room
-    [SerializeField] private float maxSeconds = 10f;
-    private float roomTimer = 0f;
-    private bool isRoomTimerFinished;
+    public float maxTimerSeconds = 10f;
+    private float roomTimer;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private BoxCollider2D roomCollider;
+    private List<Attackable> attackablesInRoom;
 
+    void Start()
+    {
+        roomTimer = maxTimerSeconds;
+        
+    }
 
     void Update()
     {
-        roomTimer += Time.deltaTime;
+        roomTimer -= Time.deltaTime;
 
         if (roomTimer <= 0f)
         {
@@ -22,17 +30,17 @@ public class Room : MonoBehaviour
 
     void HandleRoomTimerFinished()
     {
-        isRoomTimerFinished = true;
-    }
+        bool playerInside = Physics2D.OverlapBox(
+            roomCollider.bounds.center,
+            roomCollider.bounds.extents,
+            0f,
+            playerLayer
+        );
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (isRoomTimerFinished && collider)
+        if (playerInside)
         {
-        //    Debug.Log();
+            RoomManager.Instance.GameOver();
         }
     }
-
-
 
 }
