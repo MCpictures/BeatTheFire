@@ -627,11 +627,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1032319339 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8735269550659659562, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-  m_PrefabInstance: {fileID: 8424790321418094544}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1288506493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,18 +1245,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 2875382880443659307, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-      propertyPath: shootForce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2875382880443659307, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-      propertyPath: shootPoint
-      value: 
-      objectReference: {fileID: 1032319339}
-    - target: {fileID: 2875382880443659307, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 9011546779420268075, guid: 015c727a3f4ba134587c16ccae3c85be, type: 3}
     - target: {fileID: 5422790537937426555, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1318,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8949902817873330439, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 176970aca69b648cbb662ac68290a296, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
