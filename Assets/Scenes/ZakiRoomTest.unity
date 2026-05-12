@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5718162602736609612, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7047602289645155216, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3053,6 +3057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5f7d11a37f8470d8bde0bc2eebfef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::House
+  globalTimer: 0
 --- !u!4 &2127689699
 Transform:
   m_ObjectHideFlags: 0

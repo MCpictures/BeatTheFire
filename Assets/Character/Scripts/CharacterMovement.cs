@@ -19,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer boomBoxSprite;
 
     [SerializeField] InputAction moveAction;
     [SerializeField] InputAction jumpAction;
@@ -152,10 +153,12 @@ public class CharacterMovement : MonoBehaviour
         if (isLookingRight)
         {
             spriteRenderer.flipX = false;
+            boomBoxSprite.flipX = false;
         }
         else
         {
             spriteRenderer.flipX = true;
+            boomBoxSprite.flipX = true;
         }
     }
 
