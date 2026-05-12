@@ -16,7 +16,10 @@ public class EnemyChaseAI : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Attackable attackable;
 
-    bool facingRight = true;
+    bool facingRight = false;
+    bool playerDetected = false;
+
+  
 
     void FixedUpdate()
     {
@@ -25,22 +28,27 @@ public class EnemyChaseAI : MonoBehaviour
         // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        if (distanceToPlayer <= detectionRange && distanceToPlayer > stopDistance)
+        if (distanceToPlayer <= detectionRange) //&& distanceToPlayer > stopDistance
+        {
+            playerDetected = true;
+        }
+
+        if (playerDetected)
         {
             ChasePlayer();
             animator.SetBool("IsRunning", true);
         }
-        else
-        {
-            // Stop moving
-            if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
-            animator.SetBool("IsRunning", false);
-        }
+        //else
+        //{
+        //    // Stop moving
+        //    if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
+        //    animator.SetBool("IsRunning", false);
+        //}
     }
 
     private void ChasePlayer()
     {
-        if (attackable.IsKnockedBack) return; // Early return if the player is knocked back
+        //if (attackable.IsKnockedBack) return; // Early return if the player is knocked back
 
         float direction = player.position.x - transform.position.x;
         float moveDir = Mathf.Sign(direction);
@@ -63,5 +71,13 @@ public class EnemyChaseAI : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, stopDistance);
     }
 }
