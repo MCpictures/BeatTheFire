@@ -11,7 +11,6 @@ public class Innocent : MonoBehaviour
                 innocent.ActivateItemDisplay();
             }
 
-
             Destroy(gameObject);
         }
     }

@@ -4,23 +4,28 @@ using UnityEngine.InputSystem;
 
 public class CharacterAttack : MonoBehaviour
 {
-    [Header("BaseClasses")]
-    [SerializeField] CharacterMovement characterMovement;
-
     [Header("Input")]
     [SerializeField] InputAction attackAction;
 
-    [Header("Projectile")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private float shootForce = 10f;
-
-    List<Attackable> rightAttackables = new List<Attackable>();
-    List<Attackable> leftAttackables = new List<Attackable>();
+    [Header("BaseClasses")]
+    [SerializeField] CharacterMovement characterMovement;
     [SerializeField] Animator animator;
+    [SerializeField] Transform characterTransform;
+
+    /* Under construction...
+    [Header("Projectile")]
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform shootPoint;
+    [SerializeField] float shootForce = 10f;
+    */
+
+    List<Attackable> rightAttackables = new();
+    List<Attackable> leftAttackables = new();
+    
 
     void Awake()
     {
+        // Initiate input
         attackAction = InputSystem.actions.FindAction("Player/Attack");
 
         attackAction.Enable();
@@ -47,19 +52,19 @@ public class CharacterAttack : MonoBehaviour
         {
             foreach (var attackable in new List<Attackable>(rightAttackables))
             {
-                attackable.Attacked(isLookingRight);
+                attackable.Attacked(characterTransform);
             }
         }
         else
         {
             foreach (var attackable in new List<Attackable>(leftAttackables))
             {
-                attackable.Attacked(isLookingRight);
+                attackable.Attacked(characterTransform);
             }
         }
-        //ShootFire(isLookingRight);
     }
 
+    /* Under construction...
     private void ShootFire(bool isLookingRight)
     {
         GameObject projectile = Instantiate(
@@ -78,9 +83,11 @@ public class CharacterAttack : MonoBehaviour
             rb.AddForce(direction * shootForce, ForceMode2D.Impulse);
         }
     }
+    */
 
     public void AttackableEntered(Attackable attackableIn, AttackColliderPosition attackablePosition)
     {
+        // Add attackable to array for multi attack if in range
         switch (attackablePosition)
         {
             case AttackColliderPosition.Right:
@@ -92,8 +99,9 @@ public class CharacterAttack : MonoBehaviour
         }
     }
 
-    public void AttackableLeft(Attackable attackableIn, AttackColliderPosition attackablePosition)
+    public void AttackableExits(Attackable attackableIn, AttackColliderPosition attackablePosition)
     {
+        // Remove attackable from array if out of range
         switch (attackablePosition)
         {
             case AttackColliderPosition.Right:

@@ -1,39 +1,41 @@
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float moveSpeed = 7;
+    [SerializeField] bool isLookingRight;
 
+    [Header("Climbing")]
     [SerializeField] float climbSpeed = 4f;
 
+    [Header("Jumping")]
     [SerializeField] float jumpTakeOffSpeed = 7;
+
+    [Header("BaseClasses")]
+    [SerializeField] Rigidbody2D rigidBody;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Animator animator;
+
+    [Header("Input")]
+    [SerializeField] InputAction moveAction;
+    [SerializeField] InputAction jumpAction;
+
+    [Header("Groundcheck")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Vector2 groundCheckBoxSize = new Vector2(0.8f, 0.1f);
     [SerializeField] float groundCheckDistance = 0.05f;
     [SerializeField] float groundCheckYOffset = 0.55f;
 
-    [SerializeField] Rigidbody2D rigidBody;
-    [SerializeField] SpriteRenderer spriteRenderer;
-
-    [SerializeField] InputAction moveAction;
-    [SerializeField] InputAction jumpAction;
-
-    [SerializeField] bool isLookingRight;
-    [SerializeField] Animator animator;
-
     bool isTouchingLadder;
     bool isClimbing;
-
     bool jump;
     bool isGrounded;
 
     void Awake()
     {
+        // Initialise input
         moveAction = InputSystem.actions.FindAction("Player/Move");
         jumpAction = InputSystem.actions.FindAction("Player/Jump");
 
@@ -45,30 +47,32 @@ public class CharacterMovement : MonoBehaviour
     {
         CheckGrounded();
 
+        // Collect input
         float xInput = moveAction.ReadValue<Vector2>().x;
         float yInput = moveAction.ReadValue<Vector2>().y;
 
-        HandleAnimation();
+        HandleAnimation(xInput, yInput);
         ComputeLookDirection(xInput);
+        ComputeVelocity(xInput, yInput);
         FlipSprite();
+        DetectClimbing(yInput);
+        DetectJumping();
+    }
 
-        if (isTouchingLadder && Mathf.Abs(yInput) > 0.1f)
-        {
-            isClimbing = true;
-        }
-
+    private void DetectJumping()
+    {
         if (isGrounded && !isTouchingLadder && jumpAction.WasPressedThisFrame())
         {
             jump = true;
         }
     }
 
-    void FixedUpdate()
+    private void DetectClimbing(float yInput)
     {
-        float xInput = moveAction.ReadValue<Vector2>().x;
-        float yInput = moveAction.ReadValue<Vector2>().y;
-
-        ComputeVelocity(xInput, yInput);
+        if (isTouchingLadder && Mathf.Abs(yInput) > 0.1f)
+        {
+            isClimbing = true;
+        }
     }
 
     void ComputeVelocity(float moveIntendX, float moveIntendY)
@@ -77,21 +81,16 @@ public class CharacterMovement : MonoBehaviour
 
         if (isClimbing)
         {
-            targetVelocity.x = moveIntendX * moveSpeed;
             targetVelocity.y = moveIntendY * climbSpeed;
         }
-        else
+        else if (jump && isGrounded)
         {
-            if (jump && isGrounded)
-            {
-                animator.SetTrigger("JumpTrigger");
-                targetVelocity.y = jumpTakeOffSpeed;
-                jump = false;
-            }
-
-            targetVelocity.x = moveIntendX * moveSpeed;
+            animator.SetTrigger("JumpTrigger");
+            targetVelocity.y = jumpTakeOffSpeed;
+            jump = false;
         }
 
+        targetVelocity.x = moveIntendX * moveSpeed;
         rigidBody.linearVelocity = targetVelocity;
     }
 
@@ -159,11 +158,8 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void HandleAnimation()
+    void HandleAnimation(float xInput, float yInput)
     {
-        float xInput = moveAction.ReadValue<Vector2>().x;
-        float yInput = moveAction.ReadValue<Vector2>().y;
-
         animator.SetBool("IsRunning", Mathf.Abs(xInput) > 0.01f && isGrounded);
         animator.SetBool("IsIdle", Mathf.Abs(xInput) == 0f && isGrounded);
 
