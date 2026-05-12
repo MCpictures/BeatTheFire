@@ -25,9 +25,7 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Groundcheck")]
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] Vector2 groundCheckBoxSize = new Vector2(0.8f, 0.1f);
-    [SerializeField] float groundCheckDistance = 0.05f;
-    [SerializeField] float groundCheckYOffset = 0.55f;
+    [SerializeField] BoxCollider2D groundCheckCollider;
 
     float xInput;
     float yInput;
@@ -104,28 +102,13 @@ public class CharacterMovement : MonoBehaviour
 
     void CheckGrounded()
     {
-        Vector2 origin = (Vector2)transform.position + Vector2.down * (groundCheckYOffset * transform.lossyScale.y);
-
-        RaycastHit2D hit = Physics2D.BoxCast(
-            origin,
-            groundCheckBoxSize,
+        isGrounded = Physics2D.OverlapBox(
+            groundCheckCollider.bounds.center,
+            groundCheckCollider.bounds.size,
             0f,
-            Vector2.down,
-            groundCheckDistance,
             groundLayer
         );
 
-        isGrounded = hit.collider != null;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = isGrounded ? Color.green : Color.red;
-
-        Vector2 origin = (Vector2)transform.position + Vector2.down * (groundCheckYOffset * transform.lossyScale.y);
-        Vector2 castCenter = origin + Vector2.down * groundCheckDistance;
-
-        Gizmos.DrawWireCube(castCenter, groundCheckBoxSize);
     }
 
     public void EnteredLadder()
