@@ -33,7 +33,7 @@ public class EnemyChaseAI : MonoBehaviour
         else
         {
             // Stop moving
-            rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
+            if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
             animator.SetBool("IsRunning", false);
         }
     }
