@@ -36,6 +36,10 @@ public class CharacterMovement : MonoBehaviour
     bool isClimbing;
     bool jump;
     bool isGrounded;
+    public bool canMove = true;
+
+    private int facingDirection = 1;
+    public int FacingDirection => facingDirection; // added this for knockback direction
 
     void Awake()
     {
@@ -58,13 +62,18 @@ public class CharacterMovement : MonoBehaviour
         HandleAnimation(xInput, yInput);
         ComputeLookDirection(xInput);
         FlipSprite();
-        DetectClimbing(yInput);
-        DetectJumping();
+        
+       
+            DetectClimbing(yInput);
+            DetectJumping();
     }
 
     void FixedUpdate()
     {
-        ComputeVelocity(xInput, yInput);
+        if (canMove)
+        {
+            ComputeVelocity(xInput, yInput);
+        }
     }
 
     private void DetectJumping()
@@ -146,10 +155,12 @@ public class CharacterMovement : MonoBehaviour
     {
         if (moveInput > 0.01f)
         {
+            facingDirection = 1; // added this for knockback direction
             isLookingRight = true;
         }
         else if (moveInput < -0.01f)
         {
+            facingDirection = -1;
             isLookingRight = false;
         }
     }
