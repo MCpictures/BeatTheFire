@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("BaseClasses")]
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] SpriteRenderer spriteRenderer;
-     [SerializeField] SpriteRenderer boomBoxSprite;
+    [SerializeField] SpriteRenderer boomBoxSprite;
     [SerializeField] Animator animator;
 
     [Header("Input")]
@@ -28,6 +28,9 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] Vector2 groundCheckBoxSize = new Vector2(0.8f, 0.1f);
     [SerializeField] float groundCheckDistance = 0.05f;
     [SerializeField] float groundCheckYOffset = 0.55f;
+
+    float xInput;
+    float yInput;
 
     bool isTouchingLadder;
     bool isClimbing;
@@ -49,15 +52,19 @@ public class CharacterMovement : MonoBehaviour
         CheckGrounded();
 
         // Collect input
-        float xInput = moveAction.ReadValue<Vector2>().x;
-        float yInput = moveAction.ReadValue<Vector2>().y;
+        xInput = moveAction.ReadValue<Vector2>().x;
+        yInput = moveAction.ReadValue<Vector2>().y;
 
         HandleAnimation(xInput, yInput);
         ComputeLookDirection(xInput);
-        ComputeVelocity(xInput, yInput);
         FlipSprite();
         DetectClimbing(yInput);
         DetectJumping();
+    }
+
+    void FixedUpdate()
+    {
+        ComputeVelocity(xInput, yInput);
     }
 
     private void DetectJumping()

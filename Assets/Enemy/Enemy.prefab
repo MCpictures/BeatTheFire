@@ -75,13 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659047e8e5e3f254db51af12c416bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 0}
   moveSpeed: 3
   detectionRange: 8
   stopDistance: 0.5
+  player: {fileID: 0}
   animator: {fileID: 5859429744968734624}
   rigidBody: {fileID: 600526487971357487}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 6609190440488631956}
+  attackable: {fileID: 6171185880618602114}
 --- !u!114 &6171185880618602114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   brokenPieceLayerName: BrokenPiece
   takesDamage: 1
   health: 5
-  damageOnHit: 1
+  damageOnDirectHit: 0
   takesDamageOnTick: 0
   damagePerTick: 0
   timePerTick: 0
