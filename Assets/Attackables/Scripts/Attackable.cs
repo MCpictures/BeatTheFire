@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Attackable : MonoBehaviour
@@ -33,6 +34,8 @@ public class Attackable : MonoBehaviour
     int numberOfTicks;
     bool shouldTickForDamage;
 
+    public static event Action<Attackable> OnAttackableAttacked; // so rooms know when an attackable is attacked by the player
+
     void Update()
     {
         if (takesDamageOnTick && shouldTickForDamage)
@@ -60,6 +63,8 @@ public class Attackable : MonoBehaviour
         if(hasKnockback) ApplyKnockback(isCharacterLookingRight);
         if (takesDamage) ApplyDamage();
         if (shattersOnDestroyed && !takesDamage) Break();
+
+        OnAttackableAttacked?.Invoke(this);
     }
 
     void ApplyKnockback(bool isCharacterLookingRight)
@@ -143,12 +148,12 @@ public class Attackable : MonoBehaviour
             BoxCollider2D col = piece.AddComponent<BoxCollider2D>();
 
             Vector2 forceDirection = new Vector2(
-                Random.Range(-1f, 1f),
-                Random.Range(0.5f, 1.5f)
+                UnityEngine.Random.Range(-1f, 1f),
+                UnityEngine.Random.Range(0.5f, 1.5f)
             ).normalized;
 
             rb.AddForce(forceDirection * explosionForce, ForceMode2D.Impulse);
-            rb.AddTorque(Random.Range(-200f, 200f));
+            rb.AddTorque(UnityEngine.Random.Range(-200f, 200f));
 
             Destroy(piece, timeForDespawn);
         }

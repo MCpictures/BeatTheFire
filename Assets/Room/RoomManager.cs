@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     private Room[] rooms;
-    private float globalTimer = 0;
+    public float globalTimer = 0;
     private bool isGameOver = false;
 
     public static RoomManager Instance;
@@ -50,6 +51,5 @@ public class RoomManager : MonoBehaviour
             isGameOver = true;
         }
     }
-
 
 }
