@@ -6,9 +6,13 @@ public enum AttackColliderPosition
     Right
 }
 
+// Helper for the attack collider functions on the character
 public class CharacterAttackCollider : MonoBehaviour
 {
+    [Header("BaseClasses")]
     [SerializeField] CharacterAttack characterAttack;
+
+    [Header("Position information")]
     [SerializeField] AttackColliderPosition colliderPosition;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +29,7 @@ public class CharacterAttackCollider : MonoBehaviour
         Attackable attackable = other.gameObject.GetComponentInParent<Attackable>();
         if (attackable != null)
         {
-            characterAttack.AttackableLeft(attackable, colliderPosition);
+            characterAttack.AttackableExits(attackable, colliderPosition);
         }
     }
 }

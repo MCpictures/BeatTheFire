@@ -1,9 +1,12 @@
 using UnityEngine;
 
 public class CharacterCollider : MonoBehaviour
-{
-    [SerializeField] CharacterMovement characterMovement;
+{ 
+    [Header("Layer information")]
     [SerializeField] LayerMask ladderLayer;
+
+    [Header("BaseClasses")]
+    [SerializeField] CharacterMovement characterMovement;
 
     void OnTriggerEnter2D(Collider2D other)
     {

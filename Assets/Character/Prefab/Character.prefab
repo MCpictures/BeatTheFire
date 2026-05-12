@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3489008153545941937}
   - component: {fileID: 6505488286812053379}
   - component: {fileID: 8283921623319069335}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitColliderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 3323711862910470085}
   - component: {fileID: 7367837829405452510}
   - component: {fileID: 538335276362353617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 3413829024261215165}
   - component: {fileID: 2875382880443659307}
   - component: {fileID: 4645002455701028497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8735269550659659562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 2540155613242283614}
   - component: {fileID: 3384850575184063950}
   - component: {fileID: 3994514531498576600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitColliderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1109360264451659290}
   - component: {fileID: 8875370205289337131}
   - component: {fileID: 3959421727307678231}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CharacterCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819143918686041995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7257435636425429971}
   - component: {fileID: 8949902817873330439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

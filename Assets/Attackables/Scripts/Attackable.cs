@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Attackable : MonoBehaviour
@@ -18,7 +19,7 @@ public class Attackable : MonoBehaviour
     [Header("Health")]
     [SerializeField] bool takesDamage;
     [SerializeField] float health;
-    [SerializeField] float damageOnHit;
+    [SerializeField] float damageOnDirectHit;
     [SerializeField] bool takesDamageOnTick;
     [SerializeField] float damagePerTick;
     [SerializeField] float timePerTick;
@@ -31,26 +32,33 @@ public class Attackable : MonoBehaviour
     [SerializeField] BoxCollider2D attackableCollider;
 
     float timePassedSinceLastDamage;
-    int numberOfTicks;
+    int numberOfDamageTicks;
     bool shouldTickForDamage;
+    bool isKnockedBack;
 
     public static event Action<Attackable> OnAttackableAttacked; // so rooms know when an attackable is attacked by the player
 
     void Update()
+    {
+        CalculateHealthTick();
+        CalculateKnockbackStop();
+    }
+
+    private void CalculateHealthTick()
     {
         if (takesDamageOnTick && shouldTickForDamage)
         {
             timePassedSinceLastDamage += Time.deltaTime;
             if (timePassedSinceLastDamage >= timePerTick)
             {
-                numberOfTicks++;
+                numberOfDamageTicks++;
                 timePassedSinceLastDamage = 0;
                 health -= damagePerTick;
                 if (health <= 0)
                 {
-                    Break();
+                    OnObjectHasNoHealth();
                 }
-                else if(numberOfTicksBeforeTicksStop > 0 && numberOfTicks >= numberOfTicksBeforeTicksStop)
+                else if (numberOfTicksBeforeTicksStop > 0 && numberOfDamageTicks >= numberOfTicksBeforeTicksStop)
                 {
                     StopTickDamage();
                 }
@@ -58,33 +66,45 @@ public class Attackable : MonoBehaviour
         }
     }
 
-    public void Attacked(bool isCharacterLookingRight)
+    private void CalculateKnockbackStop()
     {
-        if(hasKnockback) ApplyKnockback(isCharacterLookingRight);
-        if (takesDamage) ApplyDamage();
-        if (shattersOnDestroyed && !takesDamage) Break();
-
-        OnAttackableAttacked?.Invoke(this);
+        if (Mathf.Abs(rigidBody.linearVelocity.x) == 0f) isKnockedBack = false;
     }
 
-    void ApplyKnockback(bool isCharacterLookingRight)
+    public void Attacked(Transform attackerTransform)
     {
-        rigidBody.linearVelocity = Vector2.zero;
+        OnAttackableAttacked?.Invoke(this);
+        if (hasKnockback) ApplyKnockback(attackerTransform);
+        if (takesDamage) ApplyDamage();
+        if (shattersOnDestroyed && !takesDamage) Break(); // If object is one hit and breaks
+    }
 
-        Vector2 direction = isCharacterLookingRight ? Vector2.right : Vector2.left;
-        direction = Quaternion.Euler(0, 0, isCharacterLookingRight ? knockbackAngleInDeg : -knockbackAngleInDeg) * direction;
+    void ApplyKnockback(Transform attackerTransform)
+    {
+        isKnockedBack = true;
+        rigidBody.linearVelocity = Vector2.zero; // Reset velocity so only kockback is applied
+
+        // Calculate direction
+        Vector2 direction = transform.position - attackerTransform.position;
+        direction.y = 0f;
+        direction.Normalize();
+
+        // Apply rotation to direction
+        float angle = direction.x > 0 ? knockbackAngleInDeg : -knockbackAngleInDeg;
+        direction = Quaternion.Euler(0, 0, angle) * direction;
 
         rigidBody.AddForce(direction.normalized * knockbackStrength, ForceMode2D.Impulse);
     }
 
     void ApplyDamage()
     {
-        health -= damageOnHit;
-        if(health <= 0)
+        // Apply direct hit and check if object has health left
+        health -= damageOnDirectHit;
+        if (health <= 0)
         {
-            Break();
+            OnObjectHasNoHealth();
         }
-        else if(takesDamageOnTick)
+        else if (takesDamageOnTick) // Activate damage tick
         {
             shouldTickForDamage = true;
             fireSpriteRenderer.enabled = true;
@@ -94,8 +114,14 @@ public class Attackable : MonoBehaviour
     void StopTickDamage()
     {
         timePassedSinceLastDamage = 0;
-        numberOfTicks = 0;
+        numberOfDamageTicks = 0;
         shouldTickForDamage = false;
+    }
+
+    void OnObjectHasNoHealth()
+    {
+        if (shattersOnDestroyed) Break();
+        Destroy(gameObject);
     }
 
     void Break()
@@ -157,6 +183,7 @@ public class Attackable : MonoBehaviour
 
             Destroy(piece, timeForDespawn);
         }
-        Destroy(gameObject);
     }
+
+    public bool IsKnockedBack { get { return isKnockedBack; } }
 }
