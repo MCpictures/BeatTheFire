@@ -27,7 +27,7 @@ public class EnemyChaseAI : MonoBehaviour
         // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        if (distanceToPlayer <= detectionRange) //&& distanceToPlayer > stopDistance
+        if (distanceToPlayer <= detectionRange) 
         {
             playerDetected = true;
         }

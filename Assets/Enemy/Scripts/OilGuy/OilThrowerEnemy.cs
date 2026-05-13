@@ -6,6 +6,7 @@ public class OilThrowerEnemy : MonoBehaviour
     [Header("PlayerDetection")]
     [SerializeField] Transform player;
     [SerializeField] float detectionRange = 5f;
+    [SerializeField] float detectionHeight = 1f;
     [SerializeField] float throwRange = 3f;
 
     [Header("OilObject")]
@@ -33,18 +34,19 @@ public class OilThrowerEnemy : MonoBehaviour
     {
         if (player == null) return;
 
-        float distanceFromPlayer = Mathf.Abs(transform.position.x - player.position.x);
-       
+        float distanceFromPlayerX = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceFromPlayerY = Mathf.Abs(transform.position.y - player.position.y);
+
         if (isRunningAway) // don't chase anymore
         {
             rb.linearVelocity = new Vector2(moveDir * runSpeed, rb.linearVelocity.y);
             return;
         }
 
-        if (distanceFromPlayer <= detectionRange)
+        if (distanceFromPlayerX <= detectionRange && distanceFromPlayerY <= detectionHeight && !oilThrown)
         {
             ChasePlayer();
-            if (distanceFromPlayer <= throwRange && !oilThrown) 
+            if (distanceFromPlayerX <= throwRange && !oilThrown) 
             {
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
                 ThrowOil();
@@ -68,8 +70,9 @@ public class OilThrowerEnemy : MonoBehaviour
         }
         rb.linearVelocity = new Vector2(moveDir * runSpeed, rb.linearVelocity.y);
         
+        //for flipping the whole asset
         if (direction > 0)
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);  
         else
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
@@ -113,8 +116,8 @@ public class OilThrowerEnemy : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireCube(transform.position, new Vector3(detectionRange * 2, detectionHeight * 2, 0));
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, throwRange);
-    }
+        Gizmos.DrawWireCube(transform.position, new Vector3(throwRange * 2, detectionHeight * 2, 0));
+        }
 }

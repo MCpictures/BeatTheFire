@@ -6,8 +6,11 @@ public class OilPuddle : MonoBehaviour
     [SerializeField] Vector3 fullSize = new Vector3(0f, 0f, 0f);
     [SerializeField] private float oilSpreadDuration = 0.5f;
     [SerializeField] private float speed = 8f;
-    private GameObject player;
+    [SerializeField] private GameObject oilSprite;
 
+    [SerializeField] private float oilSpritePositionOffset = -0.9f;
+
+    private GameObject player;
     private Rigidbody2D rb;
     private void Awake()
     {
@@ -47,6 +50,7 @@ public class OilPuddle : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Kinematic;
+            oilSprite.transform.position = new Vector3(oilSprite.transform.position.x, oilSprite.transform.position.y + oilSpritePositionOffset, oilSprite.transform.position.z);
             StartSpread();
         }
         
