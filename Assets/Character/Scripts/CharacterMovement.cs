@@ -77,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void DetectJumping()
     {
-        if (isGrounded && !isTouchingLadder && jumpAction.WasPressedThisFrame())
+        if ((isGrounded || isTouchingLadder || isClimbing) && jumpAction.WasPressedThisFrame())
         {
             jump = true;
         }
@@ -99,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
         {
             targetVelocity.y = moveIntendY * climbSpeed;
         }
-        else if (jump && isGrounded)
+        else if (jump)
         {
             animator.SetTrigger("JumpTrigger");
             targetVelocity.y = jumpTakeOffSpeed;
