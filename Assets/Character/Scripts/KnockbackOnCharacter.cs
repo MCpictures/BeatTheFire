@@ -10,8 +10,7 @@ public class KnockbackOnCharacter : MonoBehaviour
     CharacterMovement characterMovement;
     Rigidbody2D rb;
 
-    
-
+   
     private void Awake()
     {
         characterMovement = GetComponent<CharacterMovement>();

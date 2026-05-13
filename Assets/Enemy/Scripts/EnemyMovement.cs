@@ -19,8 +19,6 @@ public class EnemyChaseAI : MonoBehaviour
     bool facingRight = false;
     bool playerDetected = false;
 
-  
-
     void FixedUpdate()
     {
         if (player == null) return;
@@ -28,27 +26,24 @@ public class EnemyChaseAI : MonoBehaviour
         // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        if (distanceToPlayer <= detectionRange) //&& distanceToPlayer > stopDistance
-        {
-            playerDetected = true;
-        }
+        playerDetected = distanceToPlayer <= detectionRange;
 
-        if (playerDetected)
+        if (playerDetected && distanceToPlayer > stopDistance)
         {
             ChasePlayer();
             animator.SetBool("IsRunning", true);
         }
-        //else
-        //{
-        //    // Stop moving
-        //    if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
-        //    animator.SetBool("IsRunning", false);
-        //}
+        else
+        {
+            // Stop moving
+            if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
+            animator.SetBool("IsRunning", false);
+        }
     }
 
     private void ChasePlayer()
     {
-        //if (attackable.IsKnockedBack) return; // Early return if the player is knocked back
+        if (attackable.IsKnockedBack) return; // Early return if the player is knocked back
 
         float direction = player.position.x - transform.position.x;
         float moveDir = Mathf.Sign(direction);
