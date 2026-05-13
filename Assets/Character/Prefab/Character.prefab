@@ -382,6 +382,7 @@ Transform:
   - {fileID: 819143918686041995}
   - {fileID: 7384653459134902672}
   - {fileID: 8735269550659659562}
+  - {fileID: 2854783353498441740}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4728140316745026107
@@ -424,17 +425,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
   moveSpeed: 7
+  isLookingRight: 1
   climbSpeed: 4
   jumpTakeOffSpeed: 7
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  groundCheckBoxSize: {x: 0.43, y: 0.01}
-  groundCheckDistance: 0
-  groundCheckYOffset: 0.53
   rigidBody: {fileID: 4728140316745026107}
   spriteRenderer: {fileID: 8949902817873330439}
   boomBoxSprite: {fileID: 5718162602736609612}
+  animator: {fileID: 4645002455701028497}
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -453,8 +450,11 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  isLookingRight: 1
-  animator: {fileID: 4645002455701028497}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckCollider: {fileID: 0}
+  canMove: 1
 --- !u!114 &2875382880443659307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd615686bfab5354b9ec1b4ed5c5a33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttack
-  characterMovement: {fileID: 3413829024261215165}
   attackAction:
     m_Name: Attack
     m_Type: 0
@@ -477,10 +476,9 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  projectilePrefab: {fileID: 9011546779420268075, guid: 015c727a3f4ba134587c16ccae3c85be, type: 3}
-  shootPoint: {fileID: 8735269550659659562}
-  shootForce: 1
+  characterMovement: {fileID: 3413829024261215165}
   animator: {fileID: 4645002455701028497}
+  characterTransform: {fileID: 0}
 --- !u!95 &4645002455701028497
 Animator:
   serializedVersion: 7
@@ -627,6 +625,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAttackCollider
   characterAttack: {fileID: 2875382880443659307}
   colliderPosition: 0
+--- !u!1 &6293754057224932121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2854783353498441740}
+  - component: {fileID: 8606337768453492689}
+  m_Layer: 7
+  m_Name: GroundCheckCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2854783353498441740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293754057224932121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.511, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7331350034876433315}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8606337768453492689
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293754057224932121}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.003414154, y: 0.029280543}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.26913452, y: 0.08079648}
+  m_EdgeRadius: 0
 --- !u!1 &7047602289645155216
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,10 +794,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bc457700963ad41b78aea5918f67cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterCollider
-  characterMovement: {fileID: 3413829024261215165}
   ladderLayer:
     serializedVersion: 2
     m_Bits: 64
+  characterMovement: {fileID: 3413829024261215165}
 --- !u!1 &7106572943706511617
 GameObject:
   m_ObjectHideFlags: 0
