@@ -76,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void DetectJumping()
     {
-        if (isGrounded  && jumpAction.WasPressedThisFrame())
+        if (isGrounded && !isTouchingLadder && jumpAction.WasPressedThisFrame())
         {
             jump = true;
         }
