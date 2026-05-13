@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 600526487971357487}
   - component: {fileID: 1579884329391880240}
   - component: {fileID: 6171185880618602114}
+  - component: {fileID: 2878305085904336378}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -110,10 +111,26 @@ MonoBehaviour:
   damagePerTick: 0
   timePerTick: 0
   numberOfTicksBeforeTicksStop: 0
+  doesScore: 0
+  scoreAmount: 0
   rigidBody: {fileID: 600526487971357487}
   spriteRenderer: {fileID: 6609190440488631956}
   fireSpriteRenderer: {fileID: 0}
   attackableCollider: {fileID: 3051384850752744984}
+  scoreManager: {fileID: 0}
+--- !u!114 &2878305085904336378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937494960694857687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c4e67944ad54ad983d33c1d7fd3623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  hurtSound: {fileID: 8300000, guid: 2e68a758ab2d3485f8c7fedbc4812e0e, type: 3}
 --- !u!1 &6225639226163230096
 GameObject:
   m_ObjectHideFlags: 0

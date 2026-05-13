@@ -41,7 +41,7 @@ public class Attackable : MonoBehaviour
     bool shouldTickForDamage;
     bool isKnockedBack;
 
-    public static event Action<Attackable> OnAttackableAttacked; // so rooms know when an attackable is attacked by the player
+    public static event Action<Attackable> OnAttackableAttacked; // so scripts know when an attackable is attacked by the player
 
     void Update()
     {
