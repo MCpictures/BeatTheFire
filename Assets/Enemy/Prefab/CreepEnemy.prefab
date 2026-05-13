@@ -247,6 +247,9 @@ MonoBehaviour:
   fallSpeed: 6
   runSpeed: 2
   runAwayDuration: 20
+  creepSprites:
+  - {fileID: 2959254847344813786}
+  - {fileID: 1710438226330737474}
 --- !u!50 &9106155856998446724
 Rigidbody2D:
   serializedVersion: 5

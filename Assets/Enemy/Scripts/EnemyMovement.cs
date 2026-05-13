@@ -43,10 +43,16 @@ public class EnemyChaseAI : MonoBehaviour
     private void ChasePlayer()
     {
         // Calculate direction towards the target
-        Vector2 direction = (player.position - transform.position).normalized;
-        spriteRenderer.flipX = direction.x > 0;
+        float direction =player.position.x - transform.position.x;
+
         // Move the enemy towards the target
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+        float moveDir = direction > 0 ? 1f : -1f;
+        if (moveDir > 0)
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
    

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2284502237412778130}
   - component: {fileID: 1294803812254736867}
   - component: {fileID: 4448569602839977774}
+  - component: {fileID: 8068120726020293815}
   m_Layer: 11
   m_Name: OilEnemy
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OilThrowerEnemy
   player: {fileID: 0}
   detectionRange: 5
+  detectionHeight: 1
   throwRange: 3
   oilPuddlePrefab: {fileID: 9098819321050782163, guid: 5199dabcd5ea5f94d85cd21de98571bd, type: 3}
   spawnPos: {fileID: 7206065152178515026}
@@ -216,10 +218,26 @@ MonoBehaviour:
   damagePerTick: 2
   timePerTick: 0
   numberOfTicksBeforeTicksStop: 0
+  doesScore: 0
+  scoreAmount: 0
   rigidBody: {fileID: 2284502237412778130}
   spriteRenderer: {fileID: 8686995263525200371}
   fireSpriteRenderer: {fileID: 0}
   attackableCollider: {fileID: 1294803812254736867}
+  scoreManager: {fileID: 0}
+--- !u!114 &8068120726020293815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503739793967035420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c4e67944ad54ad983d33c1d7fd3623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  hurtSound: {fileID: 8300000, guid: 2e68a758ab2d3485f8c7fedbc4812e0e, type: 3}
 --- !u!1 &2792312440175519900
 GameObject:
   m_ObjectHideFlags: 0
