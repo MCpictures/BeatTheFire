@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     [SerializeField] private float attackablePenalty = 1f; // amount of time lost when attacking an attackable
     private bool hasPlayerEnteredRoom = false;
     private List<Attackable> attackablesInRoom = new List<Attackable>();
+    [SerializeField] private List<ParticleSystem> fireParticles;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class Room : MonoBehaviour
         else
         {
             roomTimer -= Time.deltaTime;
+            ShowFireSpread();
         }
 
 
@@ -101,6 +103,50 @@ public class Room : MonoBehaviour
         );
 
         return playerInside;
+    }
+
+    void ShowFireSpread()
+    {
+        float ratio = roomTimer / maxTimerSeconds;
+
+        int smallFiresCount = Mathf.RoundToInt(fireParticles.Count * 0.25f);
+        int MediumFiresCount = Mathf.RoundToInt(fireParticles.Count * 0.50f);
+        int HighFiresCount = Mathf.RoundToInt(fireParticles.Count * 0.75f);
+        int allFiresCount = fireParticles.Count;
+
+        int targetFiresCount = 0;
+
+        if (ratio <= 0f)
+        {
+            targetFiresCount = allFiresCount;
+        }
+        else if (ratio <= 0.25f)
+        {
+            targetFiresCount = HighFiresCount;
+        }
+        else if (ratio <= 0.50f)
+        {
+            targetFiresCount = MediumFiresCount;
+        }
+        else if (ratio <= 0.75f)
+        {
+            targetFiresCount = smallFiresCount;
+        }
+
+
+        for (int i = 0; i < fireParticles.Count; i++)
+        {
+            if (i < targetFiresCount)
+            {
+                if (!fireParticles[i].isPlaying)
+                    fireParticles[i].Play();
+            }
+            else
+            {
+                if (fireParticles[i].isPlaying)
+                    fireParticles[i].Stop();
+            }
+        }
     }
 
 
