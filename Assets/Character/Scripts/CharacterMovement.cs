@@ -61,9 +61,8 @@ public class CharacterMovement : MonoBehaviour
         ComputeLookDirection(xInput);
         FlipSprite();
         
-       
-            DetectClimbing(yInput);
-            DetectJumping();
+        DetectClimbing(yInput);
+        DetectJumping();
     }
 
     void FixedUpdate()
@@ -117,7 +116,6 @@ public class CharacterMovement : MonoBehaviour
             0f,
             groundLayer
         );
-
     }
 
     public void EnteredLadder()
