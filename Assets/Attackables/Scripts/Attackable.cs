@@ -25,11 +25,16 @@ public class Attackable : MonoBehaviour
     [SerializeField] float timePerTick;
     [SerializeField] int numberOfTicksBeforeTicksStop;
 
+    [Header("Score")]
+    [SerializeField] bool doesScore;
+    [SerializeField] int scoreAmount;
+
     [Header("Base classes")]
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] SpriteRenderer fireSpriteRenderer;
     [SerializeField] BoxCollider2D attackableCollider;
+    [SerializeField] ScoreManager scoreManager;
 
     float timePassedSinceLastDamage;
     int numberOfDamageTicks;
@@ -56,7 +61,7 @@ public class Attackable : MonoBehaviour
                 health -= damagePerTick;
                 if (health <= 0)
                 {
-                    OnObjectHasNoHealth();
+                    HandleDestroy();
                 }
                 else if (numberOfTicksBeforeTicksStop > 0 && numberOfDamageTicks >= numberOfTicksBeforeTicksStop)
                 {
@@ -75,8 +80,14 @@ public class Attackable : MonoBehaviour
     {
         OnAttackableAttacked?.Invoke(this);
         if (hasKnockback) ApplyKnockback(attackerTransform);
-        if (takesDamage) ApplyDamage();
-        if (shattersOnDestroyed && !takesDamage) Break(); // If object is one hit and breaks
+        if (takesDamage)
+        {
+            ApplyDamage();
+        }
+        else
+        {
+            HandleDestroy();
+        }
     }
 
     void ApplyKnockback(Transform attackerTransform)
@@ -102,7 +113,7 @@ public class Attackable : MonoBehaviour
         health -= damageOnDirectHit;
         if (health <= 0)
         {
-            OnObjectHasNoHealth();
+            HandleDestroy();
         }
         else if (takesDamageOnTick) // Activate damage tick
         {
@@ -118,10 +129,16 @@ public class Attackable : MonoBehaviour
         shouldTickForDamage = false;
     }
 
-    void OnObjectHasNoHealth()
+    void HandleDestroy()
     {
         if (shattersOnDestroyed) Break();
+        if (doesScore) HandleScore();
         Destroy(gameObject);
+    }
+
+    void HandleScore()
+    {
+        scoreManager.Scored(scoreAmount);
     }
 
     void Break()

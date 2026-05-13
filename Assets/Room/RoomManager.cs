@@ -21,6 +21,7 @@ public class RoomManager : MonoBehaviour
         }
         Instance = this;
     }
+
     void Start()
     {
         rooms = FindObjectsByType<Room>();

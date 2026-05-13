@@ -6,7 +6,8 @@ public class Innocent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.TryGetComponent<InnocentActivator>(out InnocentActivator innocent))
+            InnocentActivator innocent = collision.GetComponentInParent<InnocentActivator>();
+            if (innocent)
             {
                 innocent.ActivateItemDisplay();
             }
