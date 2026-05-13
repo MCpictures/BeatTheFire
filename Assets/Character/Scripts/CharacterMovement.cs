@@ -35,8 +35,10 @@ public class CharacterMovement : MonoBehaviour
     bool jump;
     bool isGrounded;
     public bool canMove = true;
+    public bool isSlipping = false;
 
     private int facingDirection = 1;
+    private float friction;
     public int FacingDirection => facingDirection; // added this for knockback direction
 
     void Awake()
@@ -105,7 +107,18 @@ public class CharacterMovement : MonoBehaviour
             jump = false;
         }
 
-        targetVelocity.x = moveIntendX * moveSpeed;
+        
+        if (isSlipping)
+        {
+            friction = 0.03f;
+           // Debug.Log("Slipping!");
+        }
+        else
+        {
+            friction = 1f;   
+        }
+
+        targetVelocity.x = Mathf.Lerp(targetVelocity.x, moveIntendX * moveSpeed, friction);
         rigidBody.linearVelocity = targetVelocity;
     }
 

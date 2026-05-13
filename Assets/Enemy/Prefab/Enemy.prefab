@@ -27,10 +27,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937494960694857687}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5469999701035627263}
   - {fileID: 598490811468185076}
@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659047e8e5e3f254db51af12c416bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 3
-  detectionRange: 8
-  stopDistance: 0.5
+  moveSpeed: 5
+  detectionRange: 2.92
+  stopDistance: 1.12
   player: {fileID: 0}
   animator: {fileID: 5859429744968734624}
   rigidBody: {fileID: 600526487971357487}
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attackable
   hasKnockback: 1
-  knockbackStrength: 5
-  knockbackAngleInDeg: 40
+  knockbackStrength: 10
+  knockbackAngleInDeg: 30
   shattersOnDestroyed: 0
   pieces: 4
   explosionForce: 4
@@ -105,7 +105,7 @@ MonoBehaviour:
   brokenPieceLayerName: BrokenPiece
   takesDamage: 1
   health: 5
-  damageOnDirectHit: 0
+  damageOnDirectHit: 2
   takesDamageOnTick: 0
   damagePerTick: 0
   timePerTick: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 6609190440488631956}
   - component: {fileID: 5859429744968734624}
   m_Layer: 11
-  m_Name: Sprite
+  m_Name: Sprite&Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,8 +142,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.37, y: 0.37, z: 0.37}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8085905182155900890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,9 +194,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8596640243658272642, guid: e044ec7a08d330940b1aa8c93c6fb679, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0614308330ac62a4c91ea75de5e69863, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -238,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598490811468185076}
   - component: {fileID: 3051384850752744984}
+  - component: {fileID: 779364873944797733}
   m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
@@ -294,7 +295,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.27178445, y: -0.2750033}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -304,5 +305,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8680995, y: 0.8566613}
   m_EdgeRadius: 0
+--- !u!114 &779364873944797733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7126847739182614010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9baaf60a41723204096d9a6a44a48c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockbackToCharacter
