@@ -41,11 +41,11 @@ public class CharacterAttack : MonoBehaviour
         if (attackAction.WasPressedThisFrame())
         {
             HandleAnimation();
-            Attack();
         }
     }
-
-    void Attack()
+    
+    // called in animation event
+    public void Attack()
     {
         bool isLookingRight = characterMovement.IsLookingRight;
         if (isLookingRight)

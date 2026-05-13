@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class EnemyAudio : AudioPlayerBase
 {
-   [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip hurtSound;
+    private Attackable _attackable;
+
+    void Awake()
+    {
+        _attackable = GetComponent<Attackable>();
+    }
 
     void OnEnable()
     {
@@ -15,7 +21,10 @@ public class EnemyAudio : AudioPlayerBase
 
     void HandleAttackableAttacked(Attackable attackable)
     {
-        PlayHurtSound();
+        if (attackable == _attackable)
+        {
+            PlayHurtSound();
+        }
     }
     public void PlayHurtSound() => PlaySoundRandomPitch(hurtSound);
 
