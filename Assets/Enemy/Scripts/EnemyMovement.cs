@@ -16,8 +16,9 @@ public class EnemyChaseAI : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Attackable attackable;
 
-    bool facingRight = false;
     bool playerDetected = false;
+
+  
 
     void FixedUpdate()
     {
@@ -26,47 +27,29 @@ public class EnemyChaseAI : MonoBehaviour
         // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        playerDetected = distanceToPlayer <= detectionRange;
+        if (distanceToPlayer <= detectionRange) 
+        {
+            playerDetected = true;
+        }
 
-        if (playerDetected && distanceToPlayer > stopDistance)
+        if (playerDetected)
         {
             ChasePlayer();
             animator.SetBool("IsRunning", true);
         }
-        else
-        {
-            // Stop moving
-            if (!attackable.IsKnockedBack) rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
-            animator.SetBool("IsRunning", false);
-        }
+       
     }
 
     private void ChasePlayer()
     {
-        if (attackable.IsKnockedBack) return; // Early return if the player is knocked back
-
-        float direction = player.position.x - transform.position.x;
-        float moveDir = Mathf.Sign(direction);
-
-        rigidBody.linearVelocity = new Vector2(moveDir * moveSpeed, rigidBody.linearVelocity.y);
-
-        // Flip sprite to face player
-        if (moveDir > 0 && !facingRight) Flip();
-        else if (moveDir < 0 && facingRight) Flip();
+        // Calculate direction towards the target
+        Vector2 direction = (player.position - transform.position).normalized;
+        spriteRenderer.flipX = direction.x > 0;
+        // Move the enemy towards the target
+        transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
     }
 
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        if (facingRight)
-        {
-            spriteRenderer.flipX = false;
-        }
-        else
-        {
-            spriteRenderer.flipX = true;
-        }
-    }
+   
 
     private void OnDrawGizmosSelected()
     {
