@@ -255,7 +255,6 @@ GameObject:
   m_Component:
   - component: {fileID: 598490811468185076}
   - component: {fileID: 3051384850752744984}
-  - component: {fileID: 779364873944797733}
   - component: {fileID: 1826677025850478221}
   m_Layer: 11
   m_Name: Collider
@@ -325,18 +324,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8680972, y: 0.8388596}
   m_EdgeRadius: 0
---- !u!114 &779364873944797733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7126847739182614010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9baaf60a41723204096d9a6a44a48c59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockbackToCharacter
 --- !u!114 &1826677025850478221
 MonoBehaviour:
   m_ObjectHideFlags: 0
