@@ -402,7 +402,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 91f521ae9d313294da34064440160a6c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -516,7 +516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockbackOnCharacter
   knockbackLength: 0.5
-  knockbackForce: 10
 --- !u!1 &2356843272360404223
 GameObject:
   m_ObjectHideFlags: 0

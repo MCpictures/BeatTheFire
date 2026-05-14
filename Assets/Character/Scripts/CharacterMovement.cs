@@ -82,7 +82,8 @@ public class CharacterMovement : MonoBehaviour
             jump = true;
             if (isClimbing || isTouchingLadder)
             {
-                ExitLadder();
+                isClimbing = false;
+                rigidBody.gravityScale = 1f;
             }
         }
     }
@@ -138,8 +139,11 @@ public class CharacterMovement : MonoBehaviour
     public void EnteredLadder()
     {
         isTouchingLadder = true;
-        rigidBody.gravityScale = 0f;
-        rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, 0f);
+        if (!jump)
+        {
+            rigidBody.gravityScale = 0f;
+            rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, 0f);
+        }
     }
 
     public void ExitLadder()
