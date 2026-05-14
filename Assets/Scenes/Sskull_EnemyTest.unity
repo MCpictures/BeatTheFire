@@ -6221,6 +6221,10 @@ PrefabInstance:
       propertyPath: attackable
       value: 
       objectReference: {fileID: 2137549820}
+    - target: {fileID: 3208668188293717717, guid: a359f54337ca9dd4a86638f931417360, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7299139409956004708, guid: a359f54337ca9dd4a86638f931417360, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.61
