@@ -1764,9 +1764,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 999037636}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2562519440889288858, guid: f9ea83e142c2ab14d908cfbbbe64116d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852340239}
     - targetCorrespondingSourceObject: {fileID: 6446252281498033734, guid: f9ea83e142c2ab14d908cfbbbe64116d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1263661747}
@@ -2643,25 +2640,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7182729569901636529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &852340234 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2562519440889288858, guid: f9ea83e142c2ab14d908cfbbbe64116d, type: 3}
-  m_PrefabInstance: {fileID: 375473787}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &852340239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852340234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc37e3ac9ae6b464ca5516e53cb67e18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackOnCharacter
-  knockbackLength: 0.5
-  knockbackForce: 10
 --- !u!4 &891426401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 941202281787651637, guid: a092ce586d7420e4eb0f6adb098a1a64, type: 3}

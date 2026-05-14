@@ -12,10 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 3413829024261215165, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-      propertyPath: groundCheckCollider
-      value: 
-      objectReference: {fileID: 5752352506722673159}
     - target: {fileID: 7331350034876433315, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -62,8 +58,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
---- !u!61 &5752352506722673159 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 8606337768453492689, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
-  m_PrefabInstance: {fileID: 4088051003977018838}
-  m_PrefabAsset: {fileID: 0}

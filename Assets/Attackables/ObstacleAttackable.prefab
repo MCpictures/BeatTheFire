@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5501737013391160924}
   - component: {fileID: 1256383730947074296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6353081461694965752}
   - component: {fileID: 6545049974238459848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 515432389191347526}
   - component: {fileID: 3169879804839079439}
   - component: {fileID: 8462463532469535010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ObstacleAttackable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,10 +232,13 @@ MonoBehaviour:
   damagePerTick: 1
   timePerTick: 1
   numberOfTicksBeforeTicksStop: 0
+  doesScore: 0
+  scoreAmount: 0
   rigidBody: {fileID: 8462463532469535010}
   spriteRenderer: {fileID: 4473738971162011594}
   fireSpriteRenderer: {fileID: 6545049974238459848}
   attackableCollider: {fileID: 1256383730947074296}
+  scoreManager: {fileID: 0}
 --- !u!50 &8462463532469535010
 Rigidbody2D:
   serializedVersion: 5
@@ -273,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721774808557120324}
   - component: {fileID: 4473738971162011594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

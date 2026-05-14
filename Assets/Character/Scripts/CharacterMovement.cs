@@ -62,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
         HandleAnimation(xInput, yInput);
         ComputeLookDirection(xInput);
         FlipSprite();
-        
+
         DetectClimbing(yInput);
         DetectJumping();
     }
@@ -80,6 +80,10 @@ public class CharacterMovement : MonoBehaviour
         if ((isGrounded || isTouchingLadder || isClimbing) && jumpAction.WasPressedThisFrame())
         {
             jump = true;
+            if (isClimbing || isTouchingLadder)
+            {
+                ExitLadder();
+            }
         }
     }
 
@@ -106,15 +110,15 @@ public class CharacterMovement : MonoBehaviour
             jump = false;
         }
 
-        
+
         if (isSlipping)
         {
             friction = 0.03f;
-           // Debug.Log("Slipping!");
+            // Debug.Log("Slipping!");
         }
         else
         {
-            friction = 1f;   
+            friction = 1f;
         }
 
         targetVelocity.x = Mathf.Lerp(targetVelocity.x, moveIntendX * moveSpeed, friction);

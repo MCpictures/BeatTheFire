@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attackable
   hasKnockback: 1
-  knockbackStrength: 10
+  knockbackStrength: 5
   knockbackAngleInDeg: 30
   shattersOnDestroyed: 0
   pieces: 4
@@ -336,3 +336,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9baaf60a41723204096d9a6a44a48c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockbackToCharacter
+  knockbackStrength: 5
