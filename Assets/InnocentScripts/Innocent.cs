@@ -7,12 +7,11 @@ public class Innocent : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             InnocentActivator innocent = collision.GetComponentInParent<InnocentActivator>();
-            if (innocent)
+            if (innocent && !innocent.IsHoldingInnocent)
             {
                 innocent.ActivateItemDisplay();
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }
