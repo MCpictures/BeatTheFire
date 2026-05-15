@@ -5,9 +5,7 @@ public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text globalTimerText;
     [SerializeField] private TMP_Text innocentsSavedText;
-    [SerializeField] private ScoreManager scoreManager;
     private int totalInnocents;
-    
 
     void Start()
     {
@@ -23,7 +21,7 @@ public class GameplayUI : MonoBehaviour
     void UpdateText()
     {
         globalTimerText.text = "Time Left: " + RoomManager.Instance.globalTimer.ToString("F2");
-        innocentsSavedText.text = "Innocents Saved: " + (totalInnocents - scoreManager.numberOfInnocentsInLevel) + "/" + totalInnocents;
+        innocentsSavedText.text = "Innocents Saved: " + (totalInnocents - ScoreManager.Instance.NumberOfInnocentsInLevel) + "/" + totalInnocents;
     }
 
     

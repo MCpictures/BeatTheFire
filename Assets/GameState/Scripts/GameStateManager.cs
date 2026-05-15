@@ -3,20 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
+    [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject gameWinCanvas;
     [SerializeField] ScoreManager scoreManager;
 
     public void GameWin()
     {
-        int score = scoreManager.CurrentScore;
-        int timeScore = (int)RoomManager.Instance.globalTimer * 60;
-        score += timeScore;
-
-        Debug.Log("You rescued all survivors and win. Your score: " + score);
+        bool hasHighscore = ScoreManager.Instance.AddScoreIfHighscore();
+        gameWinCanvas.SetActive(true);
+        gameWinCanvas.GetComponent<GameWinUI>().GameWin(hasHighscore);
     }
 
     public void GameOver()
     {
-        int score = scoreManager.CurrentScore;
-        Debug.Log("You lost. Your score: " + score);
+        gameOverCanvas.SetActive(true);
+        gameOverCanvas.GetComponent<GameOverUI>().GameOver();
     }
 }
