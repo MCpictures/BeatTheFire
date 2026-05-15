@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18ae482c9c4aca644b94494bb7c172a2
+guid: aad00e05b1b5c4848a47c227d4150442
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -49,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 6000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,19 +88,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -129,45 +116,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Innocent 1_0
+      name: PlayerIdle0000
       rect:
         serializedVersion: 2
-        x: 405
-        y: 299
-        width: 4083
-        height: 2678
+        x: 769
+        y: 150
+        width: 1909
+        height: 4696
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60a92e01e19045410800000000000000
-      internalID: 1464805803539208710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Innocent 1_1
-      rect:
-        serializedVersion: 2
-        x: 3175
-        y: 2710
-        width: 53
-        height: 127
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f60f666990eb60a70800000000000000
-      internalID: 8792924270874783855
+      spriteID: 75606c9d5aba9e240800000000000000
+      internalID: 4821573604888413783
       vertices: []
       indices: 
       edges: []
@@ -176,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7fad88db98c384b428328dbc831af61e
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +151,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Innocent 1_0: 1464805803539208710
-      Innocent 1_1: 8792924270874783855
+      PlayerIdle0000: 4821573604888413783
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
