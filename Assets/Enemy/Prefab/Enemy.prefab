@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  detectionRange: 2.92
-  stopDistance: 1.12
+  detectionRange: 5
+  stopDistance: 2
   player: {fileID: 0}
   animator: {fileID: 5859429744968734624}
   rigidBody: {fileID: 600526487971357487}

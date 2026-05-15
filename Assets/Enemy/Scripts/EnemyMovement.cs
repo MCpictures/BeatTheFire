@@ -24,23 +24,28 @@ public class EnemyChaseAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
-        float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceToPlayer2D = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayerX = Mathf.Abs(transform.position.x - player.position.x);
 
-        if (distanceToPlayer <= detectionRange)
-        {
-            playerDetected = true;
-        }
-        else
-        {
-            playerDetected = false;
-        }
+        playerDetected = distanceToPlayer2D <= detectionRange;
+     
 
         if (playerDetected)
         {
-            ChasePlayer();
             animator.SetBool("IsRunning", true);
-        } else
+
+            if (distanceToPlayerX > stopDistance)
+            {
+                ChasePlayer();
+            }
+
+            else
+            {
+                rigidBody.linearVelocity = new Vector2(0f, rigidBody.linearVelocity.y);
+            }
+
+        }
+        else
         {
             animator.SetBool("IsRunning", false);
         }
@@ -49,18 +54,16 @@ public class EnemyChaseAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        // Calculate direction towards the target
         float direction = player.position.x - transform.position.x;
-
-        // Move the enemy towards the target
-        Vector2 newPosition = Vector2.MoveTowards(rigidBody.position, player.position, moveSpeed * Time.fixedDeltaTime);
-        rigidBody.MovePosition(newPosition);
-
         float moveDir = direction > 0 ? 1f : -1f;
-        if (moveDir > 0)
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        else
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        rigidBody.linearVelocity = new Vector2(moveDir * moveSpeed, rigidBody.linearVelocity.y);
+
+        transform.localScale = new Vector3(
+            moveDir > 0 ? -Mathf.Abs(transform.localScale.x) : Mathf.Abs(transform.localScale.x),
+            transform.localScale.y,
+            transform.localScale.z
+        );
     }
 
 

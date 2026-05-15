@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   detectionRange: 2.92
-  stopDistance: 1.12
+  stopDistance: 2
   player: {fileID: 0}
   animator: {fileID: 3796881618013753302}
   rigidBody: {fileID: 3532240498300425362}
@@ -79,7 +79,7 @@ MonoBehaviour:
   timeForDespawn: 4
   brokenPieceLayerName: BrokenPiece
   takesDamage: 1
-  health: 5
+  health: 10
   damageOnDirectHit: 2
   takesDamageOnTick: 0
   damagePerTick: 0

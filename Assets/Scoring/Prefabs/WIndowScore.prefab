@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8741147473794202685}
   - component: {fileID: 7241494941197539043}
   - component: {fileID: 2541521554022458274}
+  - component: {fileID: 7839429358781342438}
   m_Layer: 0
   m_Name: WIndowScore
   m_TagString: Untagged
@@ -30,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 19.34, y: -1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1070877062711475081}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7241494941197539043
@@ -71,10 +71,10 @@ BoxCollider2D:
   m_Offset: {x: 0.37, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.72, y: 2.8}
+    newSize: {x: 0.72, y: 2.8}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -92,51 +92,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9855fffa98a4cb341a6984e4eaa7e4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindowScore
-  scoreAmount: 2
+  scoreAmount: 100
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  scoreManager: {fileID: 0}
---- !u!1 &6613126274383869914
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1070877062711475081}
-  - component: {fileID: 2770994795263386406}
-  m_Layer: 0
-  m_Name: Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1070877062711475081
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6613126274383869914}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8741147473794202685}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2770994795263386406
+--- !u!212 &7839429358781342438
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6613126274383869914}
+  m_GameObject: {fileID: 3781060761310273315}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
