@@ -8,6 +8,9 @@ public class WindowScore : MonoBehaviour
     [Header("Layer information")]
     [SerializeField] LayerMask playerLayer;
 
+    [Header("BaseClasses")]
+    [SerializeField] ScoreManager scoreManager;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
@@ -15,7 +18,7 @@ public class WindowScore : MonoBehaviour
             InnocentActivator innocentActivator = other.gameObject.GetComponentInParent<InnocentActivator>();
             if (innocentActivator == null || !innocentActivator.IsHoldingInnocent) return;
             innocentActivator.DeactivateItemDisplay();
-            ScoreManager.Instance.Scored(scoreAmount);
+            scoreManager.Scored(scoreAmount);
         }
     }
 
