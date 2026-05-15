@@ -10,7 +10,6 @@ public class RoomManager : MonoBehaviour
     private bool isGameOver = false;
 
     public static RoomManager Instance;
-    [SerializeField] GameOverUI gameOverUI;
 
     void Awake()
     {
@@ -25,14 +24,13 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        // rooms = FindObjectsByType<Room>();
-        // for (int i = 0; i < rooms.Count(); i++)
-        // {
-        //     globalTimer += rooms[i].maxTimerSeconds;
-        // }
+        rooms = FindObjectsByType<Room>();
+        for (int i = 0; i < rooms.Count(); i++)
+        {
+            globalTimer += rooms[i].maxTimerSeconds;
+        }
 
-        // globalTimer = globalTimer / 2;
-
+        globalTimer = globalTimer / 2;
         print("global timer: " + globalTimer);
     }
 
@@ -51,9 +49,8 @@ public class RoomManager : MonoBehaviour
     {
         if (!isGameOver)
         {
+            print("game over");
             isGameOver = true;
-            gameOverUI.gameObject.SetActive(true);
-            gameOverUI.GameOver();
         }
     }
 

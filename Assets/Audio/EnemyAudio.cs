@@ -3,8 +3,6 @@ using UnityEngine;
 public class EnemyAudio : AudioPlayerBase
 {
     [SerializeField] private AudioClip hurtSound;
-    [SerializeField] private float minHurtSoundPitch = 0.95f;
-    [SerializeField] private float maxHurtSoundPitch = 1.2f;
     private Attackable _attackable;
 
     void Awake()
@@ -28,6 +26,6 @@ public class EnemyAudio : AudioPlayerBase
             PlayHurtSound();
         }
     }
-    public void PlayHurtSound() => PlaySoundRandomPitch(hurtSound, 1f, minHurtSoundPitch, maxHurtSoundPitch);
+    public void PlayHurtSound() => PlaySoundRandomPitch(hurtSound);
 
 }

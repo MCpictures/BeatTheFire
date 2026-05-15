@@ -104,7 +104,7 @@ public class Room : MonoBehaviour
 
         int targetFiresCount = 0;
 
-        if (ratio <= 0.1f)
+        if (ratio <= 0f)
         {
             targetFiresCount = allFiresCount;
         }
