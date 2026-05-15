@@ -12,13 +12,11 @@ public class Room : MonoBehaviour
     [SerializeField] private BoxCollider2D roomCollider;
     [SerializeField] private float attackablePenalty = 1f; // amount of time lost when attacking an attackable
     private bool hasPlayerEnteredRoom = false;
-    private List<Attackable> attackablesInRoom = new List<Attackable>();
     [SerializeField] private List<ParticleSystem> fireParticles;
 
     void Start()
     {
         roomTimer = maxTimerSeconds;
-        CheckForAttackablesInRoom();
 
     }
 
@@ -65,27 +63,17 @@ public class Room : MonoBehaviour
         }
     }
 
-    void CheckForAttackablesInRoom()
-    {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(
-        roomCollider.bounds.center,
-        roomCollider.bounds.size,
-        0f
-        );
-
-        foreach (var hit in hits)
-        {
-            Attackable attackable = hit.GetComponentInParent<Attackable>();
-            if (attackable != null && !attackablesInRoom.Contains(attackable))
-            {
-                attackablesInRoom.Add(attackable);
-            }
-        }
-    }
-
     void HandleAttackableAttacked(Attackable attackable)
     {
-        if (hasPlayerEnteredRoom && attackablesInRoom.Contains(attackable))
+        if (!hasPlayerEnteredRoom) return;
+
+        // check if this attackable is inside the room
+        Collider2D attackableCollider = attackable.GetComponentInChildren<Collider2D>();
+        if (attackableCollider == null) return;
+
+        bool isInsideRoom = roomCollider.bounds.Contains(attackableCollider.bounds.center);
+
+        if (isInsideRoom)
         {
             roomTimer = Mathf.Max(0f, roomTimer - attackablePenalty);
             RoomManager.Instance.globalTimer = Mathf.Max(0f, RoomManager.Instance.globalTimer - attackablePenalty);

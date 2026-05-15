@@ -4,8 +4,6 @@ using UnityEngine;
 public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text globalTimerText;
-    [SerializeField] private Color timerFlashColor = Color.red;
-    [SerializeField] private float timerFlashDuration = 0.1f;
 
     void Update()
     {
