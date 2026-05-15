@@ -25,13 +25,14 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        rooms = FindObjectsByType<Room>();
-        for (int i = 0; i < rooms.Count(); i++)
-        {
-            globalTimer += rooms[i].maxTimerSeconds;
-        }
+        // rooms = FindObjectsByType<Room>();
+        // for (int i = 0; i < rooms.Count(); i++)
+        // {
+        //     globalTimer += rooms[i].maxTimerSeconds;
+        // }
 
-        globalTimer = globalTimer / 2;
+        // globalTimer = globalTimer / 2;
+
         print("global timer: " + globalTimer);
     }
 
