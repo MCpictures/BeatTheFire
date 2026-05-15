@@ -8,6 +8,9 @@ public class GameStateManager : MonoBehaviour
     public void GameWin()
     {
         int score = scoreManager.CurrentScore;
+        int timeScore = (int)RoomManager.Instance.globalTimer * 60;
+        score += timeScore;
+
         Debug.Log("You rescued all survivors and win. Your score: " + score);
     }
 

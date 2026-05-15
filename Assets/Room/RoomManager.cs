@@ -41,6 +41,7 @@ public class RoomManager : MonoBehaviour
         if (globalTimer <= 0f)
         {
             GameOver();
+            globalTimer = 0f;
         }
     }
 
