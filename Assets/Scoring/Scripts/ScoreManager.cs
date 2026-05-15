@@ -27,6 +27,8 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] GameStateManager gameStateManager;
 
+    public static ScoreManager Instance;
+
     string playerName;
     int currentScore;
     int numberOfInnocentsInLevel;
@@ -36,14 +38,23 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         savePath = Path.Combine(Application.persistentDataPath, "highscores.json");
         LoadHighscores();
     }
 
     void Start()
     {
-        Innocent[] innocents = FindObjectsByType<Innocent>();
-        numberOfInnocentsInLevel = innocents.Length;
+        
     }
 
     public void Scored(int ScoreAmmount)
@@ -57,16 +68,24 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void AddHighscore(string playerName, int score)
+    public bool AddScoreIfHighscore()
     {
-        highscoreData.highscores.Add(
-            new HighscoreEntry(playerName, score)
-        );
+        if (highscoreData.highscores.Count >= 10)
+        {
+            int lowestHighscore = highscoreData.highscores[^1].score;
 
+            if (currentScore <= lowestHighscore)
+            {
+                return false;
+            }
+        }
+
+        highscoreData.highscores.Add(
+            new HighscoreEntry(playerName, currentScore)
+        );
         highscoreData.highscores.Sort(
             (a, b) => b.score.CompareTo(a.score)
         );
-
         if (highscoreData.highscores.Count > 10)
         {
             highscoreData.highscores.RemoveRange(
@@ -76,6 +95,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         SaveHighscores();
+        return true;
     }
 
     public List<HighscoreEntry> GetHighscores()
@@ -104,4 +124,8 @@ public class ScoreManager : MonoBehaviour
     }
 
     public int CurrentScore { get { return currentScore; } }
+
+    public string PlayerName { set { playerName = value; } }
+
+    public int NumberOfInnocentsInLevel { set { numberOfInnocentsInLevel = value; } }
 }
