@@ -34,7 +34,6 @@ public class Attackable : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] SpriteRenderer fireSpriteRenderer;
     [SerializeField] BoxCollider2D attackableCollider;
-    [SerializeField] ScoreManager scoreManager;
 
     float timePassedSinceLastDamage;
     int numberOfDamageTicks;
@@ -138,7 +137,7 @@ public class Attackable : MonoBehaviour
 
     void HandleScore()
     {
-        scoreManager.Scored(scoreAmount);
+        ScoreManager.Instance.Scored(scoreAmount);
     }
 
     void Break()

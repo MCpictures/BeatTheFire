@@ -21,11 +21,11 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/MainMenu/MainMenu.unity
+    m_path: Assets/Scenes/MainMenu.unity
     m_guid: c2e59dcf13dd2424c97af8553334c857
   - m_enabled: 1
-    m_path: Assets/Scenes/Luke_Level_1.unity
-    m_guid: 787def9936fdabd4cb6cb059b14b14b9
+    m_path: Assets/Scenes/Level1.unity
+    m_guid: cf68d651eadfd4c25ae6235729777190
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

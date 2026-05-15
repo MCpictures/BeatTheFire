@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class HighscoreEntry
@@ -31,7 +32,7 @@ public class ScoreManager : MonoBehaviour
 
     string playerName;
     int currentScore;
-    public int numberOfInnocentsInLevel;
+    int numberOfInnocentsInLevel;
 
     string savePath;
     HighscoreData highscoreData;
@@ -52,9 +53,20 @@ public class ScoreManager : MonoBehaviour
         LoadHighscores();
     }
 
-    void Start()
+    void OnEnable()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Level1") return;
+
+        currentScore = 0;
+        if (gameStateManager == null)
+        {
+            gameStateManager = FindAnyObjectByType<GameStateManager>();
+        }
     }
 
     public void Scored(int ScoreAmmount)
@@ -62,7 +74,7 @@ public class ScoreManager : MonoBehaviour
         currentScore += ScoreAmmount;
         Debug.Log("New score: " + currentScore);
         numberOfInnocentsInLevel--;
-        if(numberOfInnocentsInLevel == 0)
+        if (numberOfInnocentsInLevel == 0)
         {
             gameStateManager.GameWin();
         }
@@ -127,5 +139,5 @@ public class ScoreManager : MonoBehaviour
 
     public string PlayerName { set { playerName = value; } }
 
-    public int NumberOfInnocentsInLevel { set { numberOfInnocentsInLevel = value; } }
+    public int NumberOfInnocentsInLevel { set { numberOfInnocentsInLevel = value; } get { return numberOfInnocentsInLevel; } }
 }
