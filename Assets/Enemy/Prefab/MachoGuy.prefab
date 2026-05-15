@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attackable
   hasKnockback: 1
-  knockbackStrength: 10
+  knockbackStrength: 2
   knockbackAngleInDeg: 30
   shattersOnDestroyed: 0
   pieces: 4

@@ -18,7 +18,7 @@ public class EnemyChaseAI : MonoBehaviour
 
     bool playerDetected = false;
 
-  
+
 
     void FixedUpdate()
     {
@@ -27,26 +27,34 @@ public class EnemyChaseAI : MonoBehaviour
         // float distanceToPlayer = Vector2.Distance(transform.position, player.position); Had a bug because y was included in the distance
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        if (distanceToPlayer <= detectionRange) 
+        if (distanceToPlayer <= detectionRange)
         {
             playerDetected = true;
+        }
+        else
+        {
+            playerDetected = false;
         }
 
         if (playerDetected)
         {
             ChasePlayer();
             animator.SetBool("IsRunning", true);
+        } else
+        {
+            animator.SetBool("IsRunning", false);
         }
-       
+
     }
 
     private void ChasePlayer()
     {
         // Calculate direction towards the target
-        float direction =player.position.x - transform.position.x;
+        float direction = player.position.x - transform.position.x;
 
         // Move the enemy towards the target
-        transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        Vector2 newPosition = Vector2.MoveTowards(rigidBody.position, player.position, moveSpeed * Time.fixedDeltaTime);
+        rigidBody.MovePosition(newPosition);
 
         float moveDir = direction > 0 ? 1f : -1f;
         if (moveDir > 0)
@@ -55,7 +63,7 @@ public class EnemyChaseAI : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
-   
+
 
     private void OnDrawGizmosSelected()
     {
