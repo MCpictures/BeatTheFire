@@ -3582,6 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
   globalTimer: 0
+  gameOverUI: {fileID: 830194502}
 --- !u!4 &589179537
 Transform:
   m_ObjectHideFlags: 0
@@ -4637,6 +4638,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed5552765536a7f41973b6f5695ccb69, type: 3}
+--- !u!114 &830194502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8647002526474148055, guid: ed5552765536a7f41973b6f5695ccb69, type: 3}
+  m_PrefabInstance: {fileID: 830194501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353677260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a98c3b900864864d9e190a9658269bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
 --- !u!1 &834938875
 GameObject:
   m_ObjectHideFlags: 0
@@ -6611,7 +6623,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
   globalTimerText: {fileID: 912855985}
   innocentsSavedText: {fileID: 1019513498}
-  scoreManager: {fileID: 689682278}
 --- !u!114 &1177225375
 MonoBehaviour:
   m_ObjectHideFlags: 0

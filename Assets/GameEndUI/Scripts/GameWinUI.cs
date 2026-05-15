@@ -12,6 +12,7 @@ public class GameWinUI : MonoBehaviour
 
     public void GameWin(bool hasHighscore)
     {
+        Time.timeScale = 0f;
         EventSystem.current.SetSelectedGameObject(mainMenuButton);
         if (hasHighscore)
         {
@@ -22,6 +23,7 @@ public class GameWinUI : MonoBehaviour
 
     public void ClickedMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }

@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour
     private bool isGameOver = false;
 
     public static RoomManager Instance;
+    [SerializeField] GameOverUI gameOverUI;
 
     void Awake()
     {
@@ -49,8 +50,9 @@ public class RoomManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            print("game over");
             isGameOver = true;
+            gameOverUI.gameObject.SetActive(true);
+            gameOverUI.GameOver();
         }
     }
 

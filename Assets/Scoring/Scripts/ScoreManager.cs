@@ -76,6 +76,8 @@ public class ScoreManager : MonoBehaviour
         numberOfInnocentsInLevel--;
         if (numberOfInnocentsInLevel == 0)
         {
+            int timeScore = (int)(RoomManager.Instance.globalTimer * 60);
+            currentScore += timeScore;
             gameStateManager.GameWin();
         }
     }

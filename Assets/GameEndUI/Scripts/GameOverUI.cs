@@ -11,12 +11,14 @@ public class GameOverUI : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0f;
         EventSystem.current.SetSelectedGameObject(mainMenuButton);
         scoreText.text = "" + ScoreManager.Instance.CurrentScore;
     }
 
     public void ClickedMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }
