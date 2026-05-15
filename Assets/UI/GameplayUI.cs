@@ -4,14 +4,27 @@ using UnityEngine;
 public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text globalTimerText;
+    [SerializeField] private TMP_Text innocentsSavedText;
+    [SerializeField] private ScoreManager scoreManager;
+    private int totalInnocents;
+    
+
+    void Start()
+    {
+        Innocent[] innocents = FindObjectsByType<Innocent>();
+        totalInnocents = innocents.Length;
+    }
 
     void Update()
     {
-        UpdateGlobalTimerText();
+        UpdateText();
     }
 
-    void UpdateGlobalTimerText()
+    void UpdateText()
     {
         globalTimerText.text = "Time Left: " + RoomManager.Instance.globalTimer.ToString("F2");
+        innocentsSavedText.text = "Innocents Saved: " + (totalInnocents - scoreManager.numberOfInnocentsInLevel) + "/" + totalInnocents;
     }
+
+    
 }

@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] GameStateManager gameStateManager;
 
     int currentScore;
-    int numberOfInnocentsInLevel;
+    public int numberOfInnocentsInLevel;
 
     void Start()
     {
