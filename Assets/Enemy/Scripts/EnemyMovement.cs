@@ -4,8 +4,9 @@ public class EnemyChaseAI : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed = 3f;
-    [SerializeField] float detectionRange = 8f;
     [SerializeField] float stopDistance = 0.5f;
+    [SerializeField] float detectionRange = 5f;
+    [SerializeField] float detectionHeight = 1f;
 
     [Header("ExternClasses")]
     [SerializeField] Transform player;
@@ -24,26 +25,13 @@ public class EnemyChaseAI : MonoBehaviour
     {
         if (player == null) return;
 
-        float distanceToPlayer2D = Vector2.Distance(transform.position, player.position);
-        float distanceToPlayerX = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceFromPlayerX = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceFromPlayerY = Mathf.Abs(transform.position.y - player.position.y);
 
-        playerDetected = distanceToPlayer2D <= detectionRange;
-     
-
-        if (playerDetected)
+        if (distanceFromPlayerX <= detectionRange && distanceFromPlayerY <= detectionHeight )
         {
+            ChasePlayer();
             animator.SetBool("IsRunning", true);
-
-            if (distanceToPlayerX > stopDistance)
-            {
-                ChasePlayer();
-            }
-
-            else
-            {
-                rigidBody.linearVelocity = new Vector2(0f, rigidBody.linearVelocity.y);
-            }
-
         }
         else
         {
@@ -71,8 +59,7 @@ public class EnemyChaseAI : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireCube(transform.position, new Vector3(detectionRange * 2, detectionHeight * 2, 0));
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, stopDistance);
     }
 }

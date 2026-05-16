@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class OilThrowerEnemy : MonoBehaviour
 {
+    [SerializeField] private float SucideTime = 5f;
+
     [Header("PlayerDetection")]
     [SerializeField] Transform player;
     [SerializeField] float detectionRange = 5f;
@@ -108,7 +110,7 @@ public class OilThrowerEnemy : MonoBehaviour
 
     IEnumerator KillsHimself()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(SucideTime);
         rb.linearVelocity = Vector2.zero;
         Destroy(gameObject);
     }

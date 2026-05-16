@@ -18,7 +18,7 @@ TagManager:
   - RoomCollider
   - Ground
   - Enemy
-  - 
+  - BasicEnemy
   - 
   - 
   - 

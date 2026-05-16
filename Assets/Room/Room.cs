@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Room : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Room : MonoBehaviour
     [SerializeField] private float attackablePenalty = 1f; // amount of time lost when attacking an attackable
     private bool hasPlayerEnteredRoom = false;
     [SerializeField] private List<ParticleSystem> fireParticles;
-
+    [SerializeField] private Image RedOverlay;
     void Start()
     {
         roomTimer = maxTimerSeconds;
@@ -40,11 +41,17 @@ public class Room : MonoBehaviour
             {
                 hasPlayerEnteredRoom = true;
             }
+           
         }
         else
         {
             roomTimer -= Time.deltaTime;
             ShowFireSpread();
+            if (!CheckIfPlayerIsInRoom())
+            {
+                if (RedOverlay != null)
+                    RedOverlay.color = new Color(1f, 0f, 0f, 0f);
+            }
         }
 
 
@@ -134,6 +141,13 @@ public class Room : MonoBehaviour
                 if (fireParticles[i].isPlaying)
                     fireParticles[i].Stop();
             }
+        }
+
+
+        if (RedOverlay != null)
+        {
+            float danger = 1f - ratio;
+            RedOverlay.color = new Color(1f, 0f, 0f, danger * 0.5f);
         }
     }
 

@@ -249,9 +249,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  fallSpeed: 10
+  fallSpeed: 5
   runSpeed: 10
-  runAwayDuration: 20
+  runAwayDuration: 7
 --- !u!50 &9106155856998446724
 Rigidbody2D:
   serializedVersion: 5
@@ -371,7 +371,7 @@ MonoBehaviour:
   scoreAmount: 0
   rigidBody: {fileID: 9106155856998446724}
   spriteRenderer: {fileID: 2959254847344813786}
-  fireSpriteRenderer: {fileID: 2959254847344813786}
+  fireParticleSystem: {fileID: 0}
   attackableCollider: {fileID: 1117659883192581323}
 --- !u!1 &9204408203531559195
 GameObject:

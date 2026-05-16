@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  detectionRange: 2.92
   stopDistance: 0.5
+  detectionRange: 2.92
+  detectionHeight: 1
   player: {fileID: 0}
   animator: {fileID: 3796881618013753302}
   rigidBody: {fileID: 3532240498300425362}
@@ -89,7 +90,7 @@ MonoBehaviour:
   scoreAmount: 0
   rigidBody: {fileID: 3532240498300425362}
   spriteRenderer: {fileID: 3208668188293717717}
-  fireSpriteRenderer: {fileID: 0}
+  fireParticleSystem: {fileID: 0}
   attackableCollider: {fileID: 6768862494409178700}
 --- !u!212 &3208668188293717717
 SpriteRenderer:
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: dba6d52cd107d9c4b87d87529894e784, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77ecb9ecd1c1c564b8a8169f7e8700ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -225,6 +226,7 @@ GameObject:
   - component: {fileID: 7416644302800654470}
   - component: {fileID: 6768862494409178700}
   - component: {fileID: 8065608624332357268}
+  - component: {fileID: 992656648127660828}
   m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
@@ -306,3 +308,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockbackToCharacter
   knockbackStrength: 10
+--- !u!114 &992656648127660828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542966833297279720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40dde7eeedebf94e84b5a27226dd17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Macho
+  animator: {fileID: 3796881618013753302}
+  animator2: {fileID: 3796881618013753302}
