@@ -61,3 +61,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicAudio
   gameplayMusicClip: {fileID: 8300000, guid: 11396e5e1afea4ba28bac31af1833e3e, type: 3}
+  mainMenuMusicClip: {fileID: 8300000, guid: 9d5d052378ad4416f9c59cdfa91ddbba, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 // the methods in this class should just be used by AudioPlayerBase, where
 // then other audio children of AudioPlayerBase (e.g. MusicAudio or EnemyAudio) will
@@ -22,12 +23,23 @@ public class SoundEffectsManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        musicAudio.PlayGameplayMusic();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "MainMenu")
+        {
+            musicAudio.PlayMainMenuMusic();
+        }
+
+        else if (sceneName == "Level1")
+        {
+            musicAudio.PlayGameplayMusic();
+        }
+        
     }
 
 

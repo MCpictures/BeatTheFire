@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   detectionRange: 2.92
-  stopDistance: 2
+  stopDistance: 0.5
   player: {fileID: 0}
   animator: {fileID: 3796881618013753302}
   rigidBody: {fileID: 3532240498300425362}
@@ -195,7 +195,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
