@@ -8,8 +8,18 @@ public class MachoTrapRoomLogic : MonoBehaviour
     [SerializeField] GameObject door;
     [SerializeField] float doorSlideHeight = 3f;
     [SerializeField] float doorSlideSpeed = 2f;
+    [SerializeField] private SpriteRenderer playerBoomboxSprite;
+    [SerializeField] private SpriteRenderer pickUpBoomboxSprite;
     private bool doorOpened = false;
+    private bool isBoomBoxOverlapped = false;
+    [SerializeField] private LayerMask playerLayer;
+    private BoxCollider2D boomBoxPickupCollider;
 
+    void Start()
+    {
+        boomBoxPickupCollider = pickUpBoomboxSprite.GetComponent<BoxCollider2D>();
+        pickUpBoomboxSprite.enabled = false;
+    }
 
     void Update()
     {
@@ -22,11 +32,28 @@ public class MachoTrapRoomLogic : MonoBehaviour
         {
             OpenDoor();
         }
+
+        if (doorOpened && !isBoomBoxOverlapped)
+        {
+            isBoomBoxOverlapped = Physics2D.OverlapBox(
+            boomBoxPickupCollider.bounds.center,
+            boomBoxPickupCollider.bounds.size,
+            0f,
+            playerLayer
+            );
+
+            if (isBoomBoxOverlapped)
+            {
+                PickupBoomBox();
+            }
+        }
+
     }
 
     void OpenDoor()
     {
         doorOpened = true;
+        pickUpBoomboxSprite.enabled = true;
         StartCoroutine(SlideDoorUp());
     }
 
@@ -44,5 +71,11 @@ public class MachoTrapRoomLogic : MonoBehaviour
             );
             yield return null;
         }
+    }
+
+    void PickupBoomBox()
+    {
+        pickUpBoomboxSprite.enabled = false;
+        playerBoomboxSprite.enabled = true;
     }
 }

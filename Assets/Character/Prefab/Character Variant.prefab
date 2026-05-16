@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2540155613242283614, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489008153545941937, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505488286812053379, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7331350034876433315, guid: 2021ee4e14fb88d44b33eea6e99087b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
