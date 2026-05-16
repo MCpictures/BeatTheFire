@@ -17,9 +17,11 @@ public class MenuUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(firstSelectedButton);
         List<HighscoreEntry> highscores = ScoreManager.Instance.GetHighscores();
         string highscoresString = "";
+        int i = 1;
         foreach (HighscoreEntry highscore in highscores)
         {
-            highscoresString += highscore.playerName + " - " + highscore.score + "\n";
+            highscoresString += i + ". " + highscore.playerName + " - " + highscore.score + "\n";
+            i++;
         }
         highscoreText.text = highscoresString;
     }

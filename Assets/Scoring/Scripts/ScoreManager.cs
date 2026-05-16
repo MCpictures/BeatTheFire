@@ -84,7 +84,7 @@ public class ScoreManager : MonoBehaviour
 
     public bool AddScoreIfHighscore()
     {
-        if (highscoreData.highscores.Count >= 10)
+        if (highscoreData.highscores.Count >= 6)
         {
             int lowestHighscore = highscoreData.highscores[^1].score;
 
@@ -100,11 +100,11 @@ public class ScoreManager : MonoBehaviour
         highscoreData.highscores.Sort(
             (a, b) => b.score.CompareTo(a.score)
         );
-        if (highscoreData.highscores.Count > 10)
+        if (highscoreData.highscores.Count > 6)
         {
             highscoreData.highscores.RemoveRange(
-                10,
-                highscoreData.highscores.Count - 10
+                6,
+                highscoreData.highscores.Count - 6
             );
         }
 
