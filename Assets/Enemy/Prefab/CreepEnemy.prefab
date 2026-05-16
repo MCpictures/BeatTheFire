@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 4479568536101976391}
   - component: {fileID: 9106155856998446724}
   - component: {fileID: 1117659883192581323}
+  - component: {fileID: 4429028498141049092}
+  - component: {fileID: 4062433153111594712}
   m_Layer: 0
   m_Name: CreepEnemy
   m_TagString: Untagged
@@ -244,12 +246,12 @@ MonoBehaviour:
   enemyboomboxSpriteRenderer: {fileID: 1710438226330737474}
   rb: {fileID: 9106155856998446724}
   groundCheckCollider: {fileID: 1309105758989029645}
-  fallSpeed: 6
-  runSpeed: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  fallSpeed: 10
+  runSpeed: 10
   runAwayDuration: 20
-  creepSprites:
-  - {fileID: 2959254847344813786}
-  - {fileID: 1710438226330737474}
 --- !u!50 &9106155856998446724
 Rigidbody2D:
   serializedVersion: 5
@@ -323,6 +325,54 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5588331, y: 0.7863269}
   m_EdgeRadius: 0
+--- !u!114 &4429028498141049092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963984746026719084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c4e67944ad54ad983d33c1d7fd3623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  hurtSound: {fileID: 8300000, guid: 2e68a758ab2d3485f8c7fedbc4812e0e, type: 3}
+  minHurtSoundPitch: 1.5
+  maxHurtSoundPitch: 1.7
+--- !u!114 &4062433153111594712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963984746026719084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb57ea2101cd6c4f944c70dbb4418da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Attackable
+  hasKnockback: 1
+  knockbackStrength: 5
+  knockbackAngleInDeg: 30
+  shattersOnDestroyed: 0
+  pieces: 4
+  explosionForce: 4
+  timeForDespawn: 4
+  brokenPieceLayerName: BrokenPiece
+  takesDamage: 1
+  health: 7
+  damageOnDirectHit: 2
+  takesDamageOnTick: 0
+  damagePerTick: 0
+  timePerTick: 0
+  numberOfTicksBeforeTicksStop: 0
+  doesScore: 0
+  scoreAmount: 0
+  rigidBody: {fileID: 9106155856998446724}
+  spriteRenderer: {fileID: 2959254847344813786}
+  fireSpriteRenderer: {fileID: 2959254847344813786}
+  attackableCollider: {fileID: 1117659883192581323}
 --- !u!1 &9204408203531559195
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class CreepEnemy : MonoBehaviour
     [SerializeField] private SpriteRenderer enemyboomboxSpriteRenderer; 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D groundCheckCollider;
+    [SerializeField] LayerMask groundLayer;
 
     [Header("Movement")]
     [SerializeField] private float fallSpeed = 2f;      
@@ -37,6 +38,16 @@ public class CreepEnemy : MonoBehaviour
 
         enemyboomboxSpriteRenderer.enabled = false; 
         rb.gravityScale = 0f; 
+    }
+
+    void Update()
+    {
+        isGrounded = Physics2D.OverlapBox(
+            groundCheckCollider.bounds.center,
+            groundCheckCollider.bounds.size,
+            0f,
+            groundLayer
+        );
     }
 
     private void FixedUpdate()
@@ -73,11 +84,6 @@ public class CreepEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-
         if (collision.gameObject.CompareTag("Player") && !hasStolenBoombox)
         {
             SpriteRenderer[] sprites = collision.transform.root.GetComponentsInChildren<SpriteRenderer>();
@@ -107,7 +113,7 @@ public class CreepEnemy : MonoBehaviour
         FlipSprite(runAwayDir);
         isRunningAway = true;
 
-        StartCoroutine(DespawnAfterRunning());
+    //    StartCoroutine(DespawnAfterRunning());
     }
 
     private void FlipSprite(float direction)
@@ -122,5 +128,10 @@ public class CreepEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(runAwayDuration);
         Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        playerBoomboxSprite.enabled = true;
     }
 }
