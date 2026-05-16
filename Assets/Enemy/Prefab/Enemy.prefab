@@ -60,7 +60,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  detectionRange: 2.92
-  stopDistance: 1.12
+  detectionRange: 5
+  stopDistance: 0.5
   player: {fileID: 0}
   animator: {fileID: 5859429744968734624}
   rigidBody: {fileID: 600526487971357487}
@@ -117,7 +117,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6609190440488631956}
   fireSpriteRenderer: {fileID: 0}
   attackableCollider: {fileID: 3051384850752744984}
-  scoreManager: {fileID: 0}
 --- !u!114 &2878305085904336378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
   hurtSound: {fileID: 8300000, guid: 2e68a758ab2d3485f8c7fedbc4812e0e, type: 3}
+  minHurtSoundPitch: 0.95
+  maxHurtSoundPitch: 1.2
 --- !u!1 &6225639226163230096
 GameObject:
   m_ObjectHideFlags: 0

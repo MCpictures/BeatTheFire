@@ -32,7 +32,7 @@ public class Attackable : MonoBehaviour
     [Header("Base classes")]
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] SpriteRenderer fireSpriteRenderer;
+    [SerializeField] ParticleSystem fireParticleSystem;
     [SerializeField] BoxCollider2D attackableCollider;
     [SerializeField] ScoreManager scoreManager;
 
@@ -118,7 +118,7 @@ public class Attackable : MonoBehaviour
         else if (takesDamageOnTick) // Activate damage tick
         {
             shouldTickForDamage = true;
-            fireSpriteRenderer.enabled = true;
+            fireParticleSystem.Play();
         }
     }
 

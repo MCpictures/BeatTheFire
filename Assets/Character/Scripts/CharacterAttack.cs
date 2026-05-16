@@ -21,6 +21,7 @@ public class CharacterAttack : MonoBehaviour
 
     List<Attackable> rightAttackables = new();
     List<Attackable> leftAttackables = new();
+    private bool isAttacking = false;
     
 
     void Awake()
@@ -38,7 +39,7 @@ public class CharacterAttack : MonoBehaviour
 
     void CheckForAttack()
     {
-        if (attackAction.WasPressedThisFrame())
+        if (!isAttacking && attackAction.WasPressedThisFrame())
         {
             HandleAnimation();
         }
@@ -115,6 +116,12 @@ public class CharacterAttack : MonoBehaviour
 
     void HandleAnimation()
     {
+        isAttacking = true;
         animator.SetTrigger("AttackTrigger");
+    }
+
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false;
     }
 }
