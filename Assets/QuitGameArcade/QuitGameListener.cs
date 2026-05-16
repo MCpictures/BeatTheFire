@@ -5,6 +5,8 @@ public class QuitGameListener : MonoBehaviour
 {
     public static QuitGameListener Instance;
     InputAction quitAction;
+    [SerializeField] private InputAction anyButtonPress;
+    private float quitTimer = 0f;
 
     void Awake()
     {
@@ -15,6 +17,8 @@ public class QuitGameListener : MonoBehaviour
 
             quitAction = InputSystem.actions.FindAction("UI/ExitGame");
             quitAction.Enable();
+
+            anyButtonPress.Enable();
         }
         else
         {
@@ -24,6 +28,21 @@ public class QuitGameListener : MonoBehaviour
 
     void Update()
     {
+
+        quitTimer += Time.deltaTime;
+        print(quitTimer);
+
+        if (anyButtonPress.triggered)
+        {
+            quitTimer = 0f;
+        }
+
+        if(quitTimer >= 180f)
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
+
         if (quitAction.WasPressedThisFrame())
         {
             Debug.Log("Quit button pressed");
