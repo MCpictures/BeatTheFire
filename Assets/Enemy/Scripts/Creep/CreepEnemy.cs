@@ -113,7 +113,7 @@ public class CreepEnemy : MonoBehaviour
         FlipSprite(runAwayDir);
         isRunningAway = true;
 
-    //    StartCoroutine(DespawnAfterRunning());
+        StartCoroutine(DespawnAfterRunning());
     }
 
     private void FlipSprite(float direction)
@@ -130,8 +130,8 @@ public class CreepEnemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnDestroy()
-    {
-        playerBoomboxSprite.enabled = true;
-    }
+    // void OnDestroy()
+    // {
+    //     playerBoomboxSprite.enabled = true;
+    // }
 }
