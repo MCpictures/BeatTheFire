@@ -2,24 +2,28 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Room : MonoBehaviour
 {
 
     // This script handles the timer of a specific room
-    public float maxTimerSeconds = 10f;
-    private float roomTimer;
+    [SerializeField] float maxTimerSeconds = 10f;
+    [SerializeField] float roomDieSeconds = 2f;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private BoxCollider2D roomCollider;
     [SerializeField] private float attackablePenalty = 1f; // amount of time lost when attacking an attackable
     private bool hasPlayerEnteredRoom = false;
     [SerializeField] private List<ParticleSystem> fireParticles;
-    [SerializeField] private Image RedOverlay;
+    [SerializeField] private UnityEngine.UI.Image RedOverlay;
     private float exitRoomGraceTimer;
+    private float roomTimer;
+    [SerializeField] private bool resetedRedScreen = true;
+
     void Start()
     {
         roomTimer = maxTimerSeconds;
-
+        exitRoomGraceTimer = roomDieSeconds;
     }
 
     void OnEnable()
@@ -36,40 +40,41 @@ public class Room : MonoBehaviour
     void Update()
     {
         // only updating room timer if the player has entered the room before
-        if (!hasPlayerEnteredRoom)
+        if(roomTimer > 0)
         {
-            if (CheckIfPlayerIsInRoom())
+            if (!hasPlayerEnteredRoom)
             {
-                hasPlayerEnteredRoom = true;
-            }
+                if (CheckIfPlayerIsInRoom())
+                {
+                    hasPlayerEnteredRoom = true;
+                }
 
+            }
+            else
+            {
+                roomTimer -= Time.deltaTime;
+                ShowFireSpread();
+            }
         }
         else
         {
-            roomTimer -= Time.deltaTime;
-            ShowFireSpread();
-            if (!CheckIfPlayerIsInRoom())
+            if(CheckIfPlayerIsInRoom())
             {
+                exitRoomGraceTimer -= Time.deltaTime;
+                HandleRedOverlay();
+            }
+            else if(!resetedRedScreen)
+            {
+                exitRoomGraceTimer = roomDieSeconds;
                 if (RedOverlay != null)
                     RedOverlay.color = new Color(1f, 0f, 0f, 0f);
+                resetedRedScreen = true;
             }
-        }
 
-        if (!CheckIfPlayerIsInRoom())
-        {
-            exitRoomGraceTimer = 2f;
-        }
-        else
-        {
-            exitRoomGraceTimer -= Time.deltaTime;
-        }
-
-
-        if (roomTimer <= 0f && exitRoomGraceTimer <= 0f)
-        {
-            HandleRoomTimerFinished();
-            roomTimer = 0f;
-            exitRoomGraceTimer = 0f;
+            if (exitRoomGraceTimer <= 0f)
+            {
+                HandleRoomTimerFinished();
+            }
         }
     }
 
@@ -153,15 +158,15 @@ public class Room : MonoBehaviour
                     fireParticles[i].Stop();
             }
         }
+    }
 
+    void HandleRedOverlay()
+    {
         if (RedOverlay != null)
         {
-            float timerDanger = 1f - ratio;
-            // float graceDanger = 1f - (exitRoomGraceTimer / 2.0f);
-            // float danger = Math.Min(timerDanger, graceDanger);
+            resetedRedScreen = false;
+            float timerDanger = 1f - (exitRoomGraceTimer / roomDieSeconds);
             RedOverlay.color = new Color(1f, 0f, 0f, timerDanger * 0.5f);
         }
     }
-
-
 }

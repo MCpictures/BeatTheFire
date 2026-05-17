@@ -26,6 +26,12 @@ public class QuitGameListener : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
 
