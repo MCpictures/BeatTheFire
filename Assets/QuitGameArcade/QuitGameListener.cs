@@ -30,7 +30,6 @@ public class QuitGameListener : MonoBehaviour
     {
 
         quitTimer += Time.deltaTime;
-        print(quitTimer);
 
         if (anyButtonPress.triggered)
         {

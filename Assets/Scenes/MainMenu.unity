@@ -321,6 +321,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6153816516850095556, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
   m_PrefabInstance: {fileID: 8208566008796216559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &271734925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4706045032875656627, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+  m_PrefabInstance: {fileID: 8208566008796216559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271734924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb216b3648162814e938a4f1d376e75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuUI
 --- !u!1 &342226253
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +890,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7266781334651048250, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
+      propertyPath: menuUI
+      value: 
+      objectReference: {fileID: 271734925}
     - target: {fileID: 7266781334651048250, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
       propertyPath: mainMenuCanvas
       value: 

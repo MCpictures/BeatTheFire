@@ -8,6 +8,7 @@ public class PlayerNameUI : MonoBehaviour
 {
     [SerializeField] GameObject firstSelectedButton;
     [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] MenuUI menuUI;
     [SerializeField] GameObject playerNameCanvas;
     [SerializeField] TMP_Text playerNameText;
     [SerializeField] string LevelSceneName;
@@ -19,16 +20,6 @@ public class PlayerNameUI : MonoBehaviour
 
     string playerName = "";
     bool isBlinking = false;
-
-    private void Awake()
-    {
-        
-    }
-
-    void Start()
-    {
-        //playerNameCanvas.SetActive(false);
-    }
 
     public void FocusButton()
     {
@@ -97,6 +88,7 @@ public class PlayerNameUI : MonoBehaviour
         playerNameText.text = playerName;
         mainMenuCanvas.SetActive(true);
         playerNameCanvas.SetActive(false);
+        menuUI.FocusButton();
     }
 
     public void ClickedStart()

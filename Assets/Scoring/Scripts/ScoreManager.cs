@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager Instance;
 
-    string playerName;
+    [SerializeField] string playerName;
     int currentScore;
     int numberOfInnocentsInLevel;
 

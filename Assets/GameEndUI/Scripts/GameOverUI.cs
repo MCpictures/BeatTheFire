@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
-    [SerializeField] GameObject mainMenuButton;
+    [SerializeField] GameObject focusedButton;
     [SerializeField] string mainMenuSceneName;
 
     public void GameOver()
     {
         Time.timeScale = 0f;
-        EventSystem.current.SetSelectedGameObject(mainMenuButton);
+        EventSystem.current.SetSelectedGameObject(focusedButton);
         scoreText.text = "" + ScoreManager.Instance.CurrentScore;
     }
 
@@ -20,5 +20,11 @@ public class GameOverUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void ClickedRetry()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

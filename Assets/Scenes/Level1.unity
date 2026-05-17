@@ -15100,6 +15100,10 @@ PrefabInstance:
       propertyPath: m_MaxSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1600295175852087645, guid: 528485faf3d31144ba120270c100d246, type: 3}
+      propertyPath: m_AlignmentMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1636579623880158718, guid: 528485faf3d31144ba120270c100d246, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -25900,6 +25904,10 @@ PrefabInstance:
     - target: {fileID: 1600295175852087645, guid: 528485faf3d31144ba120270c100d246, type: 3}
       propertyPath: m_MaxSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600295175852087645, guid: 528485faf3d31144ba120270c100d246, type: 3}
+      propertyPath: m_AlignmentMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1636579623880158718, guid: 528485faf3d31144ba120270c100d246, type: 3}
       propertyPath: m_LocalPosition.y

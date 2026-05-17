@@ -4,7 +4,6 @@ public class EnemyChaseAI : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed = 3f;
-    [SerializeField] float stopDistance = 0.5f;
     [SerializeField] float detectionRange = 5f;
     [SerializeField] float detectionHeight = 1f;
 
@@ -16,10 +15,6 @@ public class EnemyChaseAI : MonoBehaviour
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Attackable attackable;
-
-    bool playerDetected = false;
-
-
 
     void FixedUpdate()
     {
@@ -53,8 +48,6 @@ public class EnemyChaseAI : MonoBehaviour
             transform.localScale.z
         );
     }
-
-
 
     private void OnDrawGizmosSelected()
     {
