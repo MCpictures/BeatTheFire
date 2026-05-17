@@ -136,7 +136,7 @@ MonoBehaviour:
   brokenPieceLayerName: BrokenPiece
   takesDamage: 1
   health: 10
-  damageOnDirectHit: 0
+  damageOnDirectHit: 4
   takesDamageOnTick: 1
   damagePerTick: 1
   timePerTick: 1
