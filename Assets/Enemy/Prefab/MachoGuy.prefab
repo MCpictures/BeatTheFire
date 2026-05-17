@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  stopDistance: 0.5
   detectionRange: 2.92
   detectionHeight: 1
   player: {fileID: 0}
@@ -86,8 +85,8 @@ MonoBehaviour:
   damagePerTick: 0
   timePerTick: 0
   numberOfTicksBeforeTicksStop: 0
-  doesScore: 1
-  scoreAmount: 100
+  doesScore: 0
+  scoreAmount: 0
   rigidBody: {fileID: 3532240498300425362}
   spriteRenderer: {fileID: 3208668188293717717}
   fireParticleSystem: {fileID: 0}
