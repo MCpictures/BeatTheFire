@@ -886,9 +886,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNameUI
   firstSelectedButton: {fileID: 8492476986184028335}
   mainMenuCanvas: {fileID: 0}
+  menuUI: {fileID: 0}
   playerNameCanvas: {fileID: 819661489705968421}
   playerNameText: {fileID: 7047211665017495825}
-  LevelSceneName: Level1
+  openingSceneName: OpeningVideo
   hintText: {fileID: 3466017634525755989}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
