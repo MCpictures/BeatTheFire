@@ -479,7 +479,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.68, y: 0.48, z: 1}
+  m_LocalScale: {x: 0.72, y: 0.48, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -810,6 +810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerName
       objectReference: {fileID: 0}
+    - target: {fileID: 819661489705968421, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3087671768717330275, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -898,6 +902,18 @@ PrefabInstance:
       propertyPath: mainMenuCanvas
       value: 
       objectReference: {fileID: 271734924}
+    - target: {fileID: 8558655694002600102, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558655694002600102, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558655694002600102, guid: 1605efec668bb3b42aa2bbe91fc6221f, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -972,6 +988,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2498066069233319315, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498066069233319315, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679549646648572768, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3421718676151579013, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1060,9 +1088,25 @@ PrefabInstance:
       propertyPath: playerNameCanvas
       value: 
       objectReference: {fileID: 1153019418}
+    - target: {fileID: 6103600351643500745, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_lineSpacing
+      value: 383.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103600351643500745, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6153816516850095556, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655017903541711232, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 766.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655017903541711232, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 322
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
