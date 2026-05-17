@@ -15,6 +15,7 @@ public class Room : MonoBehaviour
     private bool hasPlayerEnteredRoom = false;
     [SerializeField] private List<ParticleSystem> fireParticles;
     [SerializeField] private Image RedOverlay;
+    private float exitRoomGraceTimer;
     void Start()
     {
         roomTimer = maxTimerSeconds;
@@ -41,7 +42,7 @@ public class Room : MonoBehaviour
             {
                 hasPlayerEnteredRoom = true;
             }
-           
+
         }
         else
         {
@@ -54,11 +55,21 @@ public class Room : MonoBehaviour
             }
         }
 
+        if (!CheckIfPlayerIsInRoom())
+        {
+            exitRoomGraceTimer = 2f;
+        }
+        else
+        {
+            exitRoomGraceTimer -= Time.deltaTime;
+        }
 
-        if (roomTimer <= 0f)
+
+        if (roomTimer <= 0f && exitRoomGraceTimer <= 0f)
         {
             HandleRoomTimerFinished();
             roomTimer = 0f;
+            exitRoomGraceTimer = 0f;
         }
     }
 
@@ -143,11 +154,12 @@ public class Room : MonoBehaviour
             }
         }
 
-
         if (RedOverlay != null)
         {
-            float danger = 1f - ratio;
-            RedOverlay.color = new Color(1f, 0f, 0f, danger * 0.5f);
+            float timerDanger = 1f - ratio;
+            // float graceDanger = 1f - (exitRoomGraceTimer / 2.0f);
+            // float danger = Math.Min(timerDanger, graceDanger);
+            RedOverlay.color = new Color(1f, 0f, 0f, timerDanger * 0.5f);
         }
     }
 

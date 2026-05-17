@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
-  stopDistance: 0.5
   detectionRange: 2.92
   detectionHeight: 1
   player: {fileID: 0}
