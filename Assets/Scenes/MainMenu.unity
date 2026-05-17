@@ -988,6 +988,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1036267653355849635, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -197
+      objectReference: {fileID: 0}
     - target: {fileID: 2498066069233319315, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -1099,6 +1103,28 @@ PrefabInstance:
     - target: {fileID: 6153816516850095556, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981737743619566484, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_text
+      value: 'Left is keyboard, right is Arcade
+
+
+        WASD or Joystick - Move/Climb
+
+        Space
+        or 1 - Jump
+
+        Enter or 2 - Attack
+
+        R or A - Select'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981737743619566484, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_margin.w
+      value: -274.83154
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981737743619566484, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
+      propertyPath: m_margin.z
+      value: -152.9497
       objectReference: {fileID: 0}
     - target: {fileID: 8655017903541711232, guid: 267c10e194670324c9ef401f57d1811c, type: 3}
       propertyPath: m_AnchoredPosition.x
