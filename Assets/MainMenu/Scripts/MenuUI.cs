@@ -14,7 +14,7 @@ public class MenuUI : MonoBehaviour
 
     void Start()
     {
-        EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+        FocusButton();
         List<HighscoreEntry> highscores = ScoreManager.Instance.GetHighscores();
         string highscoresString = "";
         int i = 1;
@@ -26,7 +26,12 @@ public class MenuUI : MonoBehaviour
         highscoreText.text = highscoresString;
     }
 
-    public void ClickedStartButton()
+    public void FocusButton()
+    {
+        EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+    }
+
+public void ClickedStartButton()
     {
         mainMenuCanvas.SetActive(false);
         playerNameCanvas.SetActive(true);

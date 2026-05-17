@@ -26,4 +26,10 @@ public class GameWinUI : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
+    public void ClickedRetry()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

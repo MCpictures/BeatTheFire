@@ -23,23 +23,22 @@ public class MachoTrapRoomLogic : MonoBehaviour
 
     void Update()
     {
-        if (doorOpened) return;
-
-        // removing all enemies in list that are nullk
-        enemiesInTrapRoom.RemoveAll(enemy => enemy == null);
-
-        if (enemiesInTrapRoom.Count == 0 && doorOpened == false)
+        if (!doorOpened)
         {
-            OpenDoor();
+            enemiesInTrapRoom.RemoveAll(enemy => enemy == null);
+            if (enemiesInTrapRoom.Count == 0)
+            {
+                OpenDoor();
+            }
         }
 
         if (doorOpened && !isBoomBoxOverlapped)
         {
             isBoomBoxOverlapped = Physics2D.OverlapBox(
-            boomBoxPickupCollider.bounds.center,
-            boomBoxPickupCollider.bounds.size,
-            0f,
-            playerLayer
+                boomBoxPickupCollider.bounds.center,
+                boomBoxPickupCollider.bounds.size,
+                0f,
+                playerLayer
             );
 
             if (isBoomBoxOverlapped)

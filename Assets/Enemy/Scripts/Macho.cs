@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Macho : MonoBehaviour
 {
-    bool IsCollided;
     [SerializeField] Animator animator;
     [SerializeField] Animator animator2;
 
@@ -14,7 +13,6 @@ public class Macho : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            IsCollided = true;
             animator.SetBool("IsCollided", true);
         }
     }
@@ -23,7 +21,6 @@ public class Macho : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                IsCollided = false;
                 animator.SetBool("IsCollided", false);
             }
         }
@@ -32,7 +29,6 @@ public class Macho : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            IsCollided = true;
             animator2.SetBool("IsCollided", true);
         }
     }
@@ -40,7 +36,6 @@ public class Macho : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            IsCollided = false;
             animator2.SetBool("IsCollided", false);
         }
     }
