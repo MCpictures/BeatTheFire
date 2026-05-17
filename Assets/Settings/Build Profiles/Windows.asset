@@ -24,6 +24,9 @@ MonoBehaviour:
     m_path: Assets/Scenes/MainMenu.unity
     m_guid: c2e59dcf13dd2424c97af8553334c857
   - m_enabled: 1
+    m_path: Assets/Scenes/OpeningVideo.unity
+    m_guid: 38c89fcf01114da46be672e1cce5f190
+  - m_enabled: 1
     m_path: Assets/Scenes/Level1.unity
     m_guid: cf68d651eadfd4c25ae6235729777190
   m_HasScriptingDefines: 0

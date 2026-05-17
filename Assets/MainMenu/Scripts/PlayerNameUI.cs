@@ -11,7 +11,7 @@ public class PlayerNameUI : MonoBehaviour
     [SerializeField] MenuUI menuUI;
     [SerializeField] GameObject playerNameCanvas;
     [SerializeField] TMP_Text playerNameText;
-    [SerializeField] string LevelSceneName;
+    [SerializeField] string openingSceneName;
 
     [SerializeField] private TMP_Text hintText;
     [SerializeField] private Color normalColor = Color.white;
@@ -100,7 +100,7 @@ public class PlayerNameUI : MonoBehaviour
         else
         {
             ScoreManager.Instance.PlayerName = playerName;
-            SceneManager.LoadScene(LevelSceneName);
+            SceneManager.LoadScene(openingSceneName);
         }
     }
 
