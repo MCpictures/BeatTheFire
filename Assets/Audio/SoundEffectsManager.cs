@@ -35,6 +35,11 @@ public class SoundEffectsManager : MonoBehaviour
             musicAudio.PlayMainMenuMusic();
         }
 
+        else if (sceneName == "OpeningVideo")
+        {
+            musicAudio.PlayStartingMusic();
+        }
+
         else if (sceneName == "Level1")
         {
             musicAudio.PlayGameplayMusic();
